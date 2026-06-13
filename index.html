@@ -80,7 +80,7 @@
     .hero p { font-size:1.05rem; color:rgba(255,255,255,.72); max-width:600px; margin:0 auto; line-height:1.7; }
     /* MAIN NAV */
     .main-nav { background:#fff; border-bottom:1px solid #e0e8f0; box-shadow:0 2px 12px rgba(0,0,0,.06); position:sticky; top:97px; z-index:100; overflow-x:auto; }
-    .main-nav-inner { max-width:1280px; margin:0 auto; padding:0 32px; display:flex; gap:0; align-items:stretch; justify-content:center; white-space:nowrap; }
+    .main-nav-inner { max-width:1280px; margin:0 auto; padding:0 32px; display:flex; gap:0; align-items:stretch; justify-content:flex-start; white-space:nowrap; }
     .nav-tab { display:flex; align-items:center; gap:9px; padding:18px 28px; font-size:.92rem; font-weight:600; color:#667; border:none; background:none; cursor:pointer; border-bottom:3px solid transparent; transition:var(--tr); white-space:nowrap; font-family:'Inter',sans-serif; }
     .nav-tab:hover { color:#1a2a3a; background:#f7fafc; }
     .nav-tab.active { color:#1565C0; border-bottom-color:#1565C0; background:#f0f6ff; }
@@ -334,7 +334,7 @@
     .waffle-btn svg { width: 20px; height: 20px; display: block; }
     .explore-btn {
       display: flex; align-items: center; gap: 8px;
-      padding: 10px 20px; margin: 8px 0 8px 0;
+      padding: 10px 20px; margin: 8px 0 8px auto;
       background: linear-gradient(135deg, #1b3a2a 0%, #2E7D32 100%);
       color: #fff; font-size: .88rem; font-weight: 700; border: none;
       border-radius: 24px; cursor: pointer; white-space: nowrap;
@@ -524,6 +524,10 @@
 
 <nav class="main-nav">
   <div class="main-nav-inner">
+    <button class="nav-tab active" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
+    <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
+    <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
+    <div class="nav-divider"></div>
     <button class="explore-btn" onclick="toggleWaffle()" aria-label="Explore Us">
       <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <circle cx="4" cy="4" r="1.8"/><circle cx="10" cy="4" r="1.8"/><circle cx="16" cy="4" r="1.8"/>
@@ -532,10 +536,6 @@
       </svg>
       Explore Us
     </button>
-    <div class="nav-divider"></div>
-    <button class="nav-tab active" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
-    <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
-    <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
   </div>
 </nav>
 
