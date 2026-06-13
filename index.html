@@ -1655,16 +1655,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Restore session + handle password-reset token in URL
-(function() {
-  // Initialise EmailJS once
-  if(typeof emailjs !== 'undefined') {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  }
-
-  const s = getSession();
-  if(s) updateAuthUI(s);
-
-/* ── Mobile menu ─────────────────────────────────────────────── */
 function toggleMobileMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
   document.getElementById('mobileOverlay').classList.toggle('open');
@@ -1682,29 +1672,36 @@ function mobileSwitchSection(name) {
   if(btn) btn.classList.add('m-active');
   closeMobileMenu();
 }
-
 function submitContactForm() {
   const first = document.getElementById('cfFirst').value.trim();
   const last  = document.getElementById('cfLast').value.trim();
   const email = document.getElementById('cfEmail').value.trim();
   const type  = document.getElementById('cfType').value;
   const msg   = document.getElementById('cfMessage').value.trim();
-  const alert = document.getElementById('cfAlert');
-  alert.className = 'cf-alert';
+  const alertEl = document.getElementById('cfAlert');
+  alertEl.className = 'cf-alert';
   if(!first||!last||!email||!type||!msg) {
-    alert.textContent = 'Please fill in all required fields.';
-    alert.className = 'cf-alert show err'; return;
+    alertEl.textContent = 'Please fill in all required fields.';
+    alertEl.className = 'cf-alert show err'; return;
   }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert.textContent = 'Please enter a valid email address.';
-    alert.className = 'cf-alert show err'; return;
+    alertEl.textContent = 'Please enter a valid email address.';
+    alertEl.className = 'cf-alert show err'; return;
   }
-  // Simulate submission (in production, wire to EmailJS or a backend)
-  alert.innerHTML = '✅ Thank you, <strong>' + first + '</strong>! Your message has been received. We\'ll get back to you within 24 hours.';
-  alert.className = 'cf-alert show ok';
+  alertEl.innerHTML = '✅ Thank you, <strong>' + first + '</strong>! Your message has been received. We\'ll get back to you within 24 hours.';
+  alertEl.className = 'cf-alert show ok';
   ['cfFirst','cfLast','cfEmail','cfOrg','cfMessage'].forEach(id => { document.getElementById(id).value=''; });
   document.getElementById('cfType').value='';
 }
+
+(function() {
+  // Initialise EmailJS once
+  if(typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  const s = getSession();
+  if(s) updateAuthUI(s);
 
   const params = new URLSearchParams(window.location.search);
   const token  = params.get('reset');
