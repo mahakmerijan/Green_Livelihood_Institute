@@ -22,6 +22,7 @@
     header { background: linear-gradient(135deg,#0D1B2A 0%,#1a3a6b 60%,#0e4d3a 100%); position: sticky; top: 0; z-index: 200; box-shadow: 0 4px 24px rgba(0,0,0,.35); }
     .header-inner { max-width:1280px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; gap:18px; }
     .header-logo { height:72px; width:auto; flex-shrink:0; }
+    .header-logo2 { height:72px; width:auto; flex-shrink:0; }
     .header-text { flex:1; }
     .header-text h1 { font-family:'Playfair Display',serif; font-size:1.65rem; color:#fff; letter-spacing:.4px; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.3); }
     .header-text p { font-size:.75rem; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#a8d5a2; margin-top:3px; }
@@ -236,7 +237,8 @@
         flex-wrap:wrap;
         gap:10px;
       }
-      .header-logo{height:56px;}
+      .header-logo{height:50px;}
+      .header-logo2{height:46px;}
       .header-text{flex:1; text-align:left;}
       .header-text h1{font-size:1.05rem;}
       .header-text p{font-size:.65rem;}
@@ -261,10 +263,7 @@
   <div class="header-inner">
     <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu">☰</button>
     <img src="Logo.png" alt="Green Livelihoods Institute Logo" class="header-logo" />
-    <div class="header-text">
-      <h1>Green Livelihoods Institute</h1>
-      <p>Growth, Learning and Innovation</p>
-    </div>
+    <img src="Logo1.png" alt="Green Livelihoods Institute" class="header-logo2" />
     <!-- Auth buttons (logged out) -->
     <div class="header-auth" id="authButtons">
       <button class="btn-login" onclick="openAuthModal('login')">Log In</button>
