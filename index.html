@@ -25,6 +25,9 @@
     .header-logo2 { height:72px; width:auto; flex-shrink:0; }
     .header-text { flex:1; }
     .header-text h1 { font-family:'Playfair Display',serif; font-size:1.65rem; color:#fff; letter-spacing:.4px; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.3); }
+    .header-text p { font-size:.75rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:#a8d5a2; margin-top:3px; }
+    .header-text { flex:1; }
+    .header-text h1 { font-family:'Playfair Display',serif; font-size:1.65rem; color:#fff; letter-spacing:.4px; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.3); }
     .header-text p { font-size:.75rem; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#a8d5a2; margin-top:3px; }
     /* AUTH HEADER BUTTONS */
     .header-auth { display:flex; align-items:center; gap:10px; flex-shrink:0; }
@@ -237,8 +240,9 @@
         flex-wrap:wrap;
         gap:10px;
       }
-      .header-logo{height:50px;}
-      .header-logo2{height:46px;}
+      .header-logo2{height:50px;}
+      .header-text h1{font-size:1.1rem;}
+      .header-text p{font-size:.65rem;}
       .header-text{flex:1; text-align:left;}
       .header-text h1{font-size:1.05rem;}
       .header-text p{font-size:.65rem;}
@@ -262,8 +266,11 @@
 <header>
   <div class="header-inner">
     <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu">☰</button>
-    <img src="Logo.png" alt="Green Livelihoods Institute Logo" class="header-logo" />
     <img src="Logo1.png" alt="Green Livelihoods Institute" class="header-logo2" />
+    <div class="header-text">
+      <h1>Green Livelihoods Institute</h1>
+      <p>Growth, Learning and Innovation</p>
+    </div>
     <!-- Auth buttons (logged out) -->
     <div class="header-auth" id="authButtons">
       <button class="btn-login" onclick="openAuthModal('login')">Log In</button>
