@@ -79,8 +79,8 @@
     .hero h2 span { background:linear-gradient(90deg,#66BB6A,#42A5F5,#FFA726); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .hero p { font-size:1.05rem; color:rgba(255,255,255,.72); max-width:600px; margin:0 auto; line-height:1.7; }
     /* MAIN NAV */
-    .main-nav { background:#fff; border-bottom:1px solid #e0e8f0; box-shadow:0 2px 12px rgba(0,0,0,.06); position:sticky; top:97px; z-index:100; }
-    .main-nav-inner { max-width:1280px; margin:0 auto; padding:0 32px; display:flex; gap:0; align-items:stretch; justify-content:center; }
+    .main-nav { background:#fff; border-bottom:1px solid #e0e8f0; box-shadow:0 2px 12px rgba(0,0,0,.06); position:sticky; top:97px; z-index:100; overflow-x:auto; }
+    .main-nav-inner { max-width:1280px; margin:0 auto; padding:0 32px; display:flex; gap:0; align-items:stretch; justify-content:center; white-space:nowrap; }
     .nav-tab { display:flex; align-items:center; gap:9px; padding:18px 28px; font-size:.92rem; font-weight:600; color:#667; border:none; background:none; cursor:pointer; border-bottom:3px solid transparent; transition:var(--tr); white-space:nowrap; font-family:'Inter',sans-serif; }
     .nav-tab:hover { color:#1a2a3a; background:#f7fafc; }
     .nav-tab.active { color:#1565C0; border-bottom-color:#1565C0; background:#f0f6ff; }
@@ -192,6 +192,104 @@
     .modal-note { font-size:.8rem; color:#999; }
     .btn-yt-full { display:inline-flex; align-items:center; gap:7px; background:#FF0000; color:#fff; text-decoration:none; padding:9px 18px; border-radius:9px; font-size:.85rem; font-weight:600; transition:var(--tr); box-shadow:0 3px 12px rgba(255,0,0,.3); }
     .btn-yt-full:hover { background:#cc0000; transform:translateY(-2px); }
+    /* ── HOME PAGE ─────────────────────────────────────────────── */
+    .home-wrap { max-width:1280px; margin:0 auto; padding:0 32px 80px; }
+    .home-mission { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:48px; }
+    .mission-card { background:#fff; border-radius:var(--card-radius); padding:36px 32px; box-shadow:var(--shadow-sm); border-top:5px solid; }
+    .mission-card.mc-mission { border-color:#1565C0; }
+    .mission-card.mc-vision  { border-color:#2E7D32; }
+    .mission-card h4 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--navy); margin-bottom:12px; }
+    .mission-card p  { font-size:.92rem; color:#556; line-height:1.7; }
+    .home-services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; margin-bottom:48px; }
+    .home-svc-card { background:#fff; border-radius:14px; padding:24px 22px; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:10px; transition:var(--tr); cursor:pointer; }
+    .home-svc-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); }
+    .home-svc-icon { font-size:1.8rem; }
+    .home-svc-title { font-size:1rem; font-weight:700; color:var(--navy); }
+    .home-svc-desc { font-size:.83rem; color:#667; line-height:1.55; }
+    .home-cta { background:linear-gradient(135deg,#0D1B2A,#1a3a6b,#0e4d3a); border-radius:20px; padding:52px 40px; text-align:center; color:#fff; }
+    .home-cta h3 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:14px; }
+    .home-cta p { font-size:1rem; color:rgba(255,255,255,.75); max-width:560px; margin:0 auto 28px; line-height:1.7; }
+    .btn-cta { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#66BB6A,#2E7D32); color:#fff; border:none; border-radius:12px; padding:14px 30px; font-family:'Inter',sans-serif; font-size:1rem; font-weight:700; cursor:pointer; transition:var(--tr); box-shadow:0 6px 20px rgba(46,125,50,.4); }
+    .btn-cta:hover { filter:brightness(1.1); transform:translateY(-2px); }
+    /* ── ABOUT US ───────────────────────────────────────────────── */
+    .about-wrap { max-width:1280px; margin:0 auto; padding:0 32px 80px; }
+    .about-intro { background:#fff; border-radius:var(--card-radius); padding:40px 36px; box-shadow:var(--shadow-sm); margin-bottom:36px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; }
+    .about-intro-text h3 { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--navy); margin-bottom:14px; }
+    .about-intro-text p { font-size:.93rem; color:#556; line-height:1.75; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .stat-box { background:linear-gradient(135deg,#f0f6ff,#e8f5e9); border-radius:14px; padding:22px 18px; text-align:center; }
+    .stat-num { font-size:2rem; font-weight:800; color:#1565C0; line-height:1; }
+    .stat-label { font-size:.78rem; font-weight:600; color:#556; margin-top:4px; letter-spacing:.5px; }
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px; }
+    .team-card { background:#fff; border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--tr); text-align:center; }
+    .team-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .team-avatar { width:90px; height:90px; border-radius:50%; margin:28px auto 14px; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; color:#fff; }
+    .team-name { font-size:1rem; font-weight:700; color:var(--navy); }
+    .team-role { font-size:.8rem; color:#1565C0; font-weight:600; margin:4px 0 10px; }
+    .team-bio  { font-size:.8rem; color:#667; line-height:1.55; padding:0 18px 24px; }
+    /* ── SERVICES ───────────────────────────────────────────────── */
+    .services-wrap { max-width:1280px; margin:0 auto; padding:0 32px 80px; }
+    .sector-block { margin-bottom:44px; }
+    .sector-label { display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:#fff; font-size:.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:18px; }
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; }
+    .svc-card { background:#fff; border-radius:14px; padding:24px 22px; box-shadow:var(--shadow-sm); border-left:4px solid; }
+    .svc-card h5 { font-size:.98rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .svc-card p  { font-size:.83rem; color:#667; line-height:1.6; }
+    /* ── BLOG ───────────────────────────────────────────────────── */
+    .blog-wrap { max-width:1280px; margin:0 auto; padding:0 32px 80px; }
+    .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:26px; }
+    .blog-card { background:#fff; border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--tr); }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); }
+    .blog-thumb { height:170px; display:flex; align-items:center; justify-content:center; font-size:3rem; }
+    .blog-body { padding:20px 22px 24px; }
+    .blog-tag { display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px; border-radius:6px; margin-bottom:10px; }
+    .blog-title { font-size:1.05rem; font-weight:700; color:var(--navy); line-height:1.4; margin-bottom:8px; }
+    .blog-excerpt { font-size:.83rem; color:#667; line-height:1.6; margin-bottom:14px; }
+    .blog-meta { font-size:.75rem; color:#aaa; display:flex; gap:12px; align-items:center; }
+    /* ── CONTACT ────────────────────────────────────────────────── */
+    .contact-wrap { max-width:900px; margin:0 auto; padding:0 32px 80px; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:32px; align-items:start; }
+    .contact-info { background:linear-gradient(135deg,#0D1B2A,#1a3a6b); border-radius:var(--card-radius); padding:36px 28px; color:#fff; }
+    .contact-info h4 { font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:12px; }
+    .contact-info p { font-size:.88rem; color:rgba(255,255,255,.75); line-height:1.7; margin-bottom:24px; }
+    .contact-detail { display:flex; align-items:flex-start; gap:12px; margin-bottom:18px; }
+    .contact-detail-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+    .contact-detail-text { font-size:.85rem; color:rgba(255,255,255,.85); line-height:1.5; }
+    .contact-form-box { background:#fff; border-radius:var(--card-radius); padding:36px 32px; box-shadow:var(--shadow-sm); }
+    .contact-form-box h4 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--navy); margin-bottom:22px; }
+    .cf-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .cf-group { margin-bottom:18px; }
+    .cf-label { display:block; font-size:.8rem; font-weight:600; color:#334; margin-bottom:6px; }
+    .cf-input, .cf-select, .cf-textarea { width:100%; padding:11px 14px; border:1.5px solid #d0dbe8; border-radius:10px; font-family:'Inter',sans-serif; font-size:.88rem; color:#1a2a3a; outline:none; transition:var(--tr); background:#fafcff; resize:vertical; }
+    .cf-input:focus, .cf-select:focus, .cf-textarea:focus { border-color:#1565C0; box-shadow:0 0 0 3px rgba(21,101,192,.1); }
+    .cf-textarea { min-height:110px; }
+    .btn-cf-send { width:100%; padding:13px; border:none; border-radius:10px; font-family:'Inter',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; color:#fff; background:linear-gradient(135deg,#1565C0,#42A5F5); box-shadow:0 4px 16px rgba(21,101,192,.3); transition:var(--tr); }
+    .btn-cf-send:hover { filter:brightness(1.08); transform:translateY(-1px); }
+    .cf-alert { padding:10px 14px; border-radius:8px; font-size:.82rem; font-weight:500; margin-bottom:14px; display:none; }
+    .cf-alert.show { display:block; }
+    .cf-alert.ok  { background:#e8f5e9; color:#2E7D32; border:1px solid #a5d6a7; }
+    .cf-alert.err { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+    /* ── CLIENT PORTAL ──────────────────────────────────────────── */
+    .portal-lock { min-height:55vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 32px; }
+    .portal-lock-icon { font-size:3.5rem; margin-bottom:18px; }
+    .portal-lock h3 { font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--navy); margin-bottom:10px; }
+    .portal-lock p { font-size:.95rem; color:#556; max-width:420px; line-height:1.7; margin-bottom:24px; }
+    .portal-wrap { max-width:1280px; margin:0 auto; padding:0 32px 80px; }
+    .portal-dash-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; margin-bottom:36px; }
+    .dash-card { background:#fff; border-radius:var(--card-radius); padding:28px 24px; box-shadow:var(--shadow-sm); border-top:4px solid; }
+    .dash-card h5 { font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+    .dash-card p  { font-size:.83rem; color:#778; line-height:1.6; }
+    .dash-num { font-size:2.2rem; font-weight:800; margin-bottom:4px; }
+    .milestone-list { background:#fff; border-radius:var(--card-radius); padding:28px; box-shadow:var(--shadow-sm); }
+    .milestone-list h4 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--navy); margin-bottom:18px; }
+    .milestone-row { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid #f0f0f0; }
+    .milestone-row:last-child { border-bottom:none; }
+    .ms-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+    .ms-dot.done { background:#2E7D32; }
+    .ms-dot.active { background:#1565C0; }
+    .ms-dot.todo { background:#ccc; }
+    .ms-text { flex:1; font-size:.88rem; color:#334; font-weight:500; }
+    .ms-date { font-size:.75rem; color:#aaa; }
     /* HAMBURGER MENU */
     .hamburger-btn { display:none; }
     .mobile-menu-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:399; }
@@ -292,34 +390,34 @@
     <span class="mobile-menu-title">📋 Menu</span>
     <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
   </div>
-  <button class="mobile-nav-item active" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')">
-    <span class="m-icon">📚</span> Learning Pathways
-  </button>
-  <button class="mobile-nav-item" id="mob-tab-submit" onclick="mobileSwitchSection('submit')">
-    <span class="m-icon">✏️</span> Submit Your Work
-  </button>
-  <button class="mobile-nav-item" id="mob-tab-success" onclick="mobileSwitchSection('success')">
-    <span class="m-icon">🌟</span> Share Your Success Story
-  </button>
+  <button class="mobile-nav-item" id="mob-tab-home" onclick="mobileSwitchSection('home')"><span class="m-icon">🏠</span> Home</button>
+  <button class="mobile-nav-item" id="mob-tab-about" onclick="mobileSwitchSection('about')"><span class="m-icon">👥</span> About Us</button>
+  <button class="mobile-nav-item" id="mob-tab-services" onclick="mobileSwitchSection('services')"><span class="m-icon">🛠</span> Services</button>
+  <button class="mobile-nav-item m-active" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')"><span class="m-icon">📚</span> Knowledge Portals</button>
+  <button class="mobile-nav-item" id="mob-tab-blog" onclick="mobileSwitchSection('blog')"><span class="m-icon">📝</span> Blog</button>
+  <button class="mobile-nav-item" id="mob-tab-contact" onclick="mobileSwitchSection('contact')"><span class="m-icon">📞</span> Contact Us</button>
+  <button class="mobile-nav-item" id="mob-tab-portal" onclick="mobileSwitchSection('portal')"><span class="m-icon">🔒</span> Client Portal</button>
+  <button class="mobile-nav-item" id="mob-tab-submit" onclick="mobileSwitchSection('submit')"><span class="m-icon">✏️</span> Submit Work</button>
+  <button class="mobile-nav-item" id="mob-tab-success" onclick="mobileSwitchSection('success')"><span class="m-icon">🌟</span> Success Stories</button>
 </div>
 
 <section class="hero">
-  <div class="hero-label">Learning &amp; Development Platform</div>
+  <div class="hero-label">Growth · Learning · Innovation</div>
   <h2>Build <span>Knowledge, Attitude</span><br />and Skills that Matter</h2>
   <p>Explore curated learning journeys across entrepreneurship, supply chains, data science, and more — designed to create real-world impact.</p>
 </section>
 
 <nav class="main-nav">
   <div class="main-nav-inner">
-    <button class="nav-tab active" onclick="showSection('pathways')" id="tab-pathways">
-      <span>📚</span> Learning Pathways
-    </button>
-    <button class="nav-tab tab-submit" onclick="showSection('submit')" id="tab-submit">
-      <span>✏️</span> Submit Your Work
-    </button>
-    <button class="nav-tab tab-success" onclick="showSection('success')" id="tab-success">
-      <span>🌟</span> Share Your Success Story
-    </button>
+    <button class="nav-tab" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
+    <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
+    <button class="nav-tab" onclick="showSection('services')" id="tab-services"><span>🛠</span> Services</button>
+    <button class="nav-tab active" onclick="showSection('pathways')" id="tab-pathways"><span>📚</span> Knowledge Portals</button>
+    <button class="nav-tab" onclick="showSection('blog')" id="tab-blog"><span>📝</span> Blog</button>
+    <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
+    <button class="nav-tab" onclick="showSection('portal')" id="tab-portal"><span>🔒</span> Client Portal</button>
+    <button class="nav-tab tab-submit" onclick="showSection('submit')" id="tab-submit"><span>✏️</span> Submit Work</button>
+    <button class="nav-tab tab-success" onclick="showSection('success')" id="tab-success"><span>🌟</span> Success Stories</button>
   </div>
 </nav>
 
@@ -413,6 +511,336 @@
     </div>
   </div>
   <div class="videos-grid" id="videos-grid"></div>
+</div>
+
+<!-- VIEW: HOME -->
+<div class="view" id="view-home">
+  <div class="section-header">
+    <h3>Welcome to Green Livelihoods Institute</h3>
+    <p>Empowering enterprises, individuals, and communities through knowledge, skills, and sustainable innovation.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="home-wrap">
+    <div class="home-mission">
+      <div class="mission-card mc-mission">
+        <h4>🎯 Our Mission</h4>
+        <p>To build the capacity of individuals, enterprises, and communities through integrated learning, consulting, and innovation frameworks — unlocking green and inclusive growth for all.</p>
+      </div>
+      <div class="mission-card mc-vision">
+        <h4>🌍 Our Vision</h4>
+        <p>A world where every individual has access to the knowledge, attitude, and skills needed to create sustainable livelihoods — for themselves, their families, and their communities.</p>
+      </div>
+    </div>
+    <div class="section-header" style="padding:0 0 24px;">
+      <h3 style="font-size:1.5rem;">Core Services</h3>
+    </div>
+    <div class="home-services-grid">
+      <div class="home-svc-card" onclick="showSection('pathways')">
+        <div class="home-svc-icon">📚</div>
+        <div class="home-svc-title">Knowledge Portals</div>
+        <div class="home-svc-desc">Structured learning tracks covering Back to Basics, Entrepreneurship, Supply Chain, and AI.</div>
+      </div>
+      <div class="home-svc-card" onclick="showSection('services')">
+        <div class="home-svc-icon">🛠</div>
+        <div class="home-svc-title">Consulting Services</div>
+        <div class="home-svc-desc">Comprehensive advisory across agriculture, MSME, skilling, and sustainability sectors.</div>
+      </div>
+      <div class="home-svc-card" onclick="showSection('about')">
+        <div class="home-svc-icon">👥</div>
+        <div class="home-svc-title">Expert Team</div>
+        <div class="home-svc-desc">A multidisciplinary team of practitioners, academicians, and field experts driving impact.</div>
+      </div>
+      <div class="home-svc-card" onclick="showSection('blog')">
+        <div class="home-svc-icon">📝</div>
+        <div class="home-svc-title">Insights & Blog</div>
+        <div class="home-svc-desc">Industry trends, policy analyses, and grassroots innovation stories to keep you informed.</div>
+      </div>
+      <div class="home-svc-card" onclick="showSection('portal')">
+        <div class="home-svc-icon">🔒</div>
+        <div class="home-svc-title">Client Portal</div>
+        <div class="home-svc-desc">Secure dashboard for active clients to track milestones, deliverables, and analytics.</div>
+      </div>
+      <div class="home-svc-card" onclick="showSection('contact')">
+        <div class="home-svc-icon">📞</div>
+        <div class="home-svc-title">Get in Touch</div>
+        <div class="home-svc-desc">Reach out for inquiries, collaborations, and project requests — we respond within 24 hours.</div>
+      </div>
+    </div>
+    <div class="home-cta">
+      <h3>Ready to Elevate Your Enterprise?</h3>
+      <p>Contact us to learn how Green Livelihoods Institute (GLI) can help you unlock your potential. Together, we can achieve unparalleled growth and innovation.</p>
+      <button class="btn-cta" onclick="showSection('contact')">📞 Get in Touch</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: ABOUT US -->
+<div class="view" id="view-about">
+  <div class="section-header">
+    <h3>About Us</h3>
+    <p>Meet the team driving growth, learning, and innovation at Green Livelihoods Institute.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="about-wrap">
+    <div class="about-intro">
+      <div class="about-intro-text">
+        <h3>Who We Are</h3>
+        <p>Green Livelihoods Institute (GLI) is a centre for knowledge, attitude, skills, and impact. We work at the intersection of enterprise development, sustainable agriculture, digital innovation, and grassroots capacity building. Our multidisciplinary team brings together practitioners, policy experts, and technologists united by a common purpose — creating equitable and sustainable livelihoods.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Learners Trained</div></div>
+        <div class="stat-box"><div class="stat-num">50+</div><div class="stat-label">Enterprises Supported</div></div>
+        <div class="stat-box"><div class="stat-num">12+</div><div class="stat-label">States Reached</div></div>
+        <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Years of Impact</div></div>
+      </div>
+    </div>
+    <div class="section-header" style="padding:0 0 24px;"><h3 style="font-size:1.5rem;">Our Team</h3></div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">MK</div>
+        <div class="team-name">Mahak Merijan</div>
+        <div class="team-role">Founder & Director</div>
+        <div class="team-bio">Visionary leader with 15+ years in enterprise development, policy consulting, and sustainable livelihoods across South Asia.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">AR</div>
+        <div class="team-name">Anita Rao</div>
+        <div class="team-role">Head of Learning & Curriculum</div>
+        <div class="team-bio">Education specialist with deep expertise in adult learning, competency frameworks, and experiential pedagogy.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#E65100,#FFA726);">SP</div>
+        <div class="team-name">Suresh Patil</div>
+        <div class="team-role">Supply Chain Consultant</div>
+        <div class="team-bio">20 years of experience designing value-based supply chains for agriculture and MSME sectors across India.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">PD</div>
+        <div class="team-name">Priya Desai</div>
+        <div class="team-role">Data Science & AI Lead</div>
+        <div class="team-bio">Data scientist and AI practitioner bridging the gap between cutting-edge technology and grassroots application.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: SERVICES -->
+<div class="view" id="view-services">
+  <div class="section-header">
+    <h3>Our Services</h3>
+    <p>Comprehensive solutions categorised by target sector — tailored to your context and goals.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="services-wrap">
+    <div class="sector-block">
+      <div class="sector-label">🌾 Agriculture & Rural Livelihoods</div>
+      <div class="services-grid">
+        <div class="svc-card" style="border-color:#2E7D32;"><h5>Value Chain Development</h5><p>End-to-end design and management of agricultural value chains from farm to market, integrating smallholders into formal markets.</p></div>
+        <div class="svc-card" style="border-color:#2E7D32;"><h5>FPO Capacity Building</h5><p>Strengthening Farmer Producer Organisations through governance training, business planning, and market linkage support.</p></div>
+        <div class="svc-card" style="border-color:#2E7D32;"><h5>Sustainable Farming Practices</h5><p>Promoting climate-resilient and regenerative agriculture practices for long-term soil health and productivity.</p></div>
+      </div>
+    </div>
+    <div class="sector-block">
+      <div class="sector-label">🏭 MSME & Enterprise Development</div>
+      <div class="services-grid">
+        <div class="svc-card" style="border-color:#1565C0;"><h5>Business Diagnostics & Strategy</h5><p>Deep-dive assessments of enterprise performance followed by actionable growth strategies and implementation roadmaps.</p></div>
+        <div class="svc-card" style="border-color:#1565C0;"><h5>Market Access & Linkages</h5><p>Connecting MSMEs with buyers, investors, and institutional markets through curated networking and deal facilitation.</p></div>
+        <div class="svc-card" style="border-color:#1565C0;"><h5>Entrepreneurship Mentoring</h5><p>Structured mentoring programmes for early-stage entrepreneurs covering ideation, validation, and scale-up strategies.</p></div>
+      </div>
+    </div>
+    <div class="sector-block">
+      <div class="sector-label">🤖 Digital & Technology</div>
+      <div class="services-grid">
+        <div class="svc-card" style="border-color:#6A1B9A;"><h5>Data Analytics & AI Advisory</h5><p>Helping organisations leverage data for decision-making, predictive analytics, and AI-enabled service delivery.</p></div>
+        <div class="svc-card" style="border-color:#6A1B9A;"><h5>Digital Transformation</h5><p>Guiding enterprises through digital adoption — from process automation to e-commerce and digital marketing strategies.</p></div>
+        <div class="svc-card" style="border-color:#6A1B9A;"><h5>Tech-for-Good Consulting</h5><p>Designing technology solutions that address social challenges in health, education, agriculture, and financial inclusion.</p></div>
+      </div>
+    </div>
+    <div class="sector-block">
+      <div class="sector-label">🎓 Skilling & Capacity Building</div>
+      <div class="services-grid">
+        <div class="svc-card" style="border-color:#00695C;"><h5>Customised Training Programmes</h5><p>Tailor-made learning journeys for organisations, government bodies, and NGOs aligned to their specific capability gaps.</p></div>
+        <div class="svc-card" style="border-color:#00695C;"><h5>Leadership Development</h5><p>Executive coaching and leadership programmes designed for mid-level and senior professionals in the development sector.</p></div>
+        <div class="svc-card" style="border-color:#00695C;"><h5>Monitoring & Evaluation</h5><p>Robust M&amp;E frameworks to track programme effectiveness, impact measurement, and continuous learning.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: BLOG -->
+<div class="view" id="view-blog">
+  <div class="section-header">
+    <h3>Insights & Blog</h3>
+    <p>Industry trends, policy shifts, and grassroots innovations — curated for practitioners and changemakers.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="blog-wrap">
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">🌾</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#e8f5e9;color:#2E7D32;">Agriculture</span>
+          <div class="blog-title">How Value Chains Are Transforming Smallholder Livelihoods</div>
+          <div class="blog-excerpt">New models of agricultural value chain integration are helping smallholder farmers access premium markets and increase incomes by up to 40%.</div>
+          <div class="blog-meta"><span>📅 June 2026</span><span>⏱ 5 min read</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);">🤖</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#e3f2fd;color:#1565C0;">Technology</span>
+          <div class="blog-title">AI in the Last Mile: Opportunities and Challenges</div>
+          <div class="blog-excerpt">Artificial intelligence is reaching rural communities — but deployment without context can reinforce existing inequalities. Here's what to watch for.</div>
+          <div class="blog-meta"><span>📅 May 2026</span><span>⏱ 7 min read</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">🚀</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#fff3e0;color:#E65100;">Entrepreneurship</span>
+          <div class="blog-title">The Rise of Green Entrepreneurs in Tier-2 Cities</div>
+          <div class="blog-excerpt">A new generation of entrepreneurs in smaller cities is building businesses that are profitable and planet-friendly — often without formal training.</div>
+          <div class="blog-meta"><span>📅 April 2026</span><span>⏱ 6 min read</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);">📊</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#f3e5f5;color:#6A1B9A;">Policy</span>
+          <div class="blog-title">Policy Shifts Reshaping the Skilling Landscape in 2026</div>
+          <div class="blog-excerpt">Recent government initiatives are transforming vocational education — we break down what these changes mean for training providers and learners.</div>
+          <div class="blog-meta"><span>📅 March 2026</span><span>⏱ 8 min read</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#e0f2f1,#b2dfdb);">🔗</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#e0f2f1;color:#00695C;">Supply Chain</span>
+          <div class="blog-title">Building Resilient Supply Chains in a Volatile World</div>
+          <div class="blog-excerpt">From climate shocks to geopolitical disruptions — here are the supply chain strategies that are proving most resilient for Indian enterprises.</div>
+          <div class="blog-meta"><span>📅 February 2026</span><span>⏱ 6 min read</span></div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">🌟</div>
+        <div class="blog-body">
+          <span class="blog-tag" style="background:#fce4ec;color:#c62828;">Impact</span>
+          <div class="blog-title">Grassroots Innovation: Stories from the Field</div>
+          <div class="blog-excerpt">Community-led innovations are solving local problems in ways that no top-down programme could design. Five stories that inspired us this year.</div>
+          <div class="blog-meta"><span>📅 January 2026</span><span>⏱ 5 min read</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: CONTACT US -->
+<div class="view" id="view-contact">
+  <div class="section-header">
+    <h3>Contact Us</h3>
+    <p>Ready to collaborate? Reach out for inquiries, partnerships, and project requests.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h4>Get in Touch</h4>
+        <p>Ready to elevate your enterprise to the next level? Contact us to learn how GLI can help you unlock your potential.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">Green Livelihoods Institute<br/>India</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div class="contact-detail-text">info@greenlivelihoodsinstitute.org</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌐</div>
+          <div class="contact-detail-text">www.greenlivelihoodsinstitute.org</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">⏰</div>
+          <div class="contact-detail-text">Mon – Fri: 9:00 AM – 6:00 PM IST<br/>We respond within 24 hours</div>
+        </div>
+      </div>
+      <div class="contact-form-box">
+        <h4>Send Us a Message</h4>
+        <div class="cf-alert" id="cfAlert"></div>
+        <div class="cf-row">
+          <div class="cf-group"><label class="cf-label">First Name *</label><input class="cf-input" id="cfFirst" placeholder="First name" /></div>
+          <div class="cf-group"><label class="cf-label">Last Name *</label><input class="cf-input" id="cfLast" placeholder="Last name" /></div>
+        </div>
+        <div class="cf-group"><label class="cf-label">Email Address *</label><input class="cf-input" id="cfEmail" type="email" placeholder="you@example.com" /></div>
+        <div class="cf-group"><label class="cf-label">Organisation</label><input class="cf-input" id="cfOrg" placeholder="Your organisation (optional)" /></div>
+        <div class="cf-group">
+          <label class="cf-label">Nature of Inquiry *</label>
+          <select class="cf-select" id="cfType">
+            <option value="">Select inquiry type…</option>
+            <option>General Inquiry</option>
+            <option>Collaboration / Partnership</option>
+            <option>Project Request</option>
+            <option>Training / Capacity Building</option>
+            <option>Consulting Services</option>
+            <option>Media / Press</option>
+          </select>
+        </div>
+        <div class="cf-group"><label class="cf-label">Message *</label><textarea class="cf-textarea" id="cfMessage" placeholder="Tell us about your inquiry or project…"></textarea></div>
+        <button class="btn-cf-send" onclick="submitContactForm()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW: CLIENT PORTAL -->
+<div class="view" id="view-portal">
+  <div id="portal-locked-view">
+    <div class="portal-lock">
+      <div class="portal-lock-icon">🔒</div>
+      <h3>Client Portal</h3>
+      <p>This area is for active GLI clients. Please log in to access your dashboard, track milestones, and view deliverables.</p>
+      <button class="btn-cta" onclick="openAuthModal('login')">🔐 Log In to Access</button>
+    </div>
+  </div>
+  <div id="portal-dashboard-view" style="display:none;">
+    <div class="section-header">
+      <h3>Client Dashboard</h3>
+      <p>Track your project milestones, access deliverables, and view analytics.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="portal-wrap">
+      <div class="portal-dash-grid">
+        <div class="dash-card" style="border-color:#1565C0;">
+          <div class="dash-num" style="color:#1565C0;">3</div>
+          <h5>Active Projects</h5>
+          <p>Projects currently in progress with your dedicated GLI team.</p>
+        </div>
+        <div class="dash-card" style="border-color:#2E7D32;">
+          <div class="dash-num" style="color:#2E7D32;">8</div>
+          <h5>Milestones Completed</h5>
+          <p>Milestones successfully delivered across all your active engagements.</p>
+        </div>
+        <div class="dash-card" style="border-color:#E65100;">
+          <div class="dash-num" style="color:#E65100;">12</div>
+          <h5>Deliverables Shared</h5>
+          <p>Reports, toolkits, and frameworks delivered to your team.</p>
+        </div>
+        <div class="dash-card" style="border-color:#6A1B9A;">
+          <div class="dash-num" style="color:#6A1B9A;">94%</div>
+          <h5>Satisfaction Score</h5>
+          <p>Based on your latest feedback survey responses.</p>
+        </div>
+      </div>
+      <div class="milestone-list">
+        <h4>📋 Project Milestones</h4>
+        <div class="milestone-row"><div class="ms-dot done"></div><div class="ms-text">Inception Report &amp; Stakeholder Mapping</div><div class="ms-date">✅ Jan 2026</div></div>
+        <div class="milestone-row"><div class="ms-dot done"></div><div class="ms-text">Baseline Assessment &amp; Gap Analysis</div><div class="ms-date">✅ Feb 2026</div></div>
+        <div class="milestone-row"><div class="ms-dot done"></div><div class="ms-text">Strategy Framework Development</div><div class="ms-date">✅ Mar 2026</div></div>
+        <div class="milestone-row"><div class="ms-dot active"></div><div class="ms-text">Pilot Implementation &amp; Field Testing</div><div class="ms-date">🔵 In Progress</div></div>
+        <div class="milestone-row"><div class="ms-dot todo"></div><div class="ms-text">Scale-up Plan &amp; Handover Documentation</div><div class="ms-date">⏳ Aug 2026</div></div>
+        <div class="milestone-row"><div class="ms-dot todo"></div><div class="ms-text">Final Impact Evaluation Report</div><div class="ms-date">⏳ Sep 2026</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- VIEW: SUBMIT YOUR WORK -->
@@ -658,11 +1086,21 @@ const TOPICS = {
 function showSection(name) {
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  const map={pathways:'view-pathways',submit:'view-submit',success:'view-success'};
+  const map={
+    home:'view-home', about:'view-about', services:'view-services',
+    pathways:'view-pathways', blog:'view-blog', contact:'view-contact',
+    portal:'view-portal', submit:'view-submit', success:'view-success'
+  };
   const v=document.getElementById(map[name]);
   if(v) v.classList.add('active');
   const t=document.getElementById('tab-'+name);
   if(t) t.classList.add('active');
+  // Client portal: show dashboard if logged in, else lock screen
+  if(name==='portal') {
+    const session=getSession();
+    document.getElementById('portal-locked-view').style.display=session?'none':'block';
+    document.getElementById('portal-dashboard-view').style.display=session?'block':'none';
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -906,6 +1344,7 @@ function doLogin() {
   saveSession({email, name:user.name});
   closeAuthModals();
   updateAuthUI({email, name:user.name});
+  if(document.getElementById('view-portal').classList.contains('active')) showSection('portal');
 }
 
 function doForgot() {
@@ -1014,6 +1453,7 @@ function doResetPassword() {
 function doLogout() {
   clearSession();
   updateAuthUI(null);
+  if(document.getElementById('view-portal').classList.contains('active')) showSection('portal');
 }
 
 function updateAuthUI(session) {
@@ -1071,11 +1511,33 @@ function closeMobileMenu() {
 }
 function mobileSwitchSection(name) {
   showSection(name);
-  // update mobile active state
-  document.querySelectorAll('.mobile-nav-item').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.mobile-nav-item').forEach(b => b.classList.remove('m-active'));
   const btn = document.getElementById('mob-tab-' + name);
-  if(btn) btn.classList.add('active');
+  if(btn) btn.classList.add('m-active');
   closeMobileMenu();
+}
+
+function submitContactForm() {
+  const first = document.getElementById('cfFirst').value.trim();
+  const last  = document.getElementById('cfLast').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+  const type  = document.getElementById('cfType').value;
+  const msg   = document.getElementById('cfMessage').value.trim();
+  const alert = document.getElementById('cfAlert');
+  alert.className = 'cf-alert';
+  if(!first||!last||!email||!type||!msg) {
+    alert.textContent = 'Please fill in all required fields.';
+    alert.className = 'cf-alert show err'; return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert.textContent = 'Please enter a valid email address.';
+    alert.className = 'cf-alert show err'; return;
+  }
+  // Simulate submission (in production, wire to EmailJS or a backend)
+  alert.innerHTML = '✅ Thank you, <strong>' + first + '</strong>! Your message has been received. We\'ll get back to you within 24 hours.';
+  alert.className = 'cf-alert show ok';
+  ['cfFirst','cfLast','cfEmail','cfOrg','cfMessage'].forEach(id => { document.getElementById(id).value=''; });
+  document.getElementById('cfType').value='';
 }
 
   const params = new URLSearchParams(window.location.search);
