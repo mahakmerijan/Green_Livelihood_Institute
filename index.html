@@ -21,7 +21,7 @@
     /* HEADER */
     header { background: linear-gradient(135deg,#0D1B2A 0%,#1a3a6b 60%,#0e4d3a 100%); position: sticky; top: 0; z-index: 200; box-shadow: 0 4px 24px rgba(0,0,0,.35); }
     .header-inner { max-width:1280px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; gap:18px; }
-    .header-logo { height:68px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); flex-shrink:0; }
+    .header-logo { height:68px; width:auto; flex-shrink:0; border-radius:10px; background:#fff; padding:4px; box-shadow:0 2px 10px rgba(0,0,0,.25); }
     .header-text { flex:1; }
     .header-text h1 { font-family:'Playfair Display',serif; font-size:1.65rem; color:#fff; letter-spacing:.4px; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.3); }
     .header-text p { font-size:.75rem; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#a8d5a2; margin-top:3px; }
@@ -188,21 +188,63 @@
     .modal-note { font-size:.8rem; color:#999; }
     .btn-yt-full { display:inline-flex; align-items:center; gap:7px; background:#FF0000; color:#fff; text-decoration:none; padding:9px 18px; border-radius:9px; font-size:.85rem; font-weight:600; transition:var(--tr); box-shadow:0 3px 12px rgba(255,0,0,.3); }
     .btn-yt-full:hover { background:#cc0000; transform:translateY(-2px); }
+    /* HAMBURGER MENU */
+    .hamburger-btn { display:none; }
+    .mobile-menu-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:399; }
+    .mobile-menu-overlay.open { display:block; }
+    .mobile-menu {
+      position:fixed; top:0; left:0; bottom:0; width:78vw; max-width:300px;
+      background:#fff; z-index:400; box-shadow:4px 0 24px rgba(0,0,0,.2);
+      flex-direction:column; padding:0;
+      transform:translateX(-100%); transition:.3s cubic-bezier(.4,0,.2,1);
+      display:flex;
+    }
+    .mobile-menu.open { transform:translateX(0); }
+    .mobile-menu-header {
+      background:linear-gradient(135deg,#0D1B2A 0%,#1a3a6b 60%,#0e4d3a 100%);
+      padding:20px 20px 16px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .mobile-menu-title { color:#fff; font-size:.95rem; font-weight:700; }
+    .mobile-menu-close {
+      background:rgba(255,255,255,.15); border:none; color:#fff; border-radius:8px;
+      width:34px; height:34px; font-size:1.1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; transition:.2s;
+    }
+    .mobile-menu-close:hover { background:rgba(255,255,255,.28); }
+    .mobile-nav-item {
+      display:flex; align-items:center; gap:14px; padding:18px 22px;
+      font-family:'Inter',sans-serif; font-size:1rem; font-weight:600; color:#334;
+      border:none; background:none; cursor:pointer; text-align:left;
+      border-bottom:1px solid #f0f0f0; transition:.2s; width:100%;
+    }
+    .mobile-nav-item:hover { background:#f5f8ff; color:#1565C0; }
+    .mobile-nav-item .m-icon { font-size:1.3rem; width:32px; text-align:center; }
+    .mobile-nav-item.m-active { color:#1565C0; background:#f0f6ff; border-left:3px solid #1565C0; }
     /* RESPONSIVE */
     @media(max-width:700px){
+      .hamburger-btn {
+        display:flex; align-items:center; justify-content:center;
+        background:rgba(255,255,255,.15); border:1.5px solid rgba(255,255,255,.4);
+        border-radius:9px; width:40px; height:40px;
+        color:#fff; font-size:1.3rem; cursor:pointer; flex-shrink:0;
+      }
+      .main-nav { display:none; }
       .header-inner{
-        padding:16px 16px;
-        flex-direction:column;
+        padding:14px 16px;
+        flex-direction:row;
         align-items:center;
-        text-align:center;
+        flex-wrap:wrap;
         gap:10px;
       }
-      .header-logo{height:64px;}
-      .header-text h1{font-size:1.2rem;}
-      .header-text p{font-size:.7rem;}
-      .header-auth{justify-content:center;}
-      .user-chip{justify-content:center;}
-      .hero{padding:40px 16px 50px;}
+      .header-logo{height:52px; border-radius:8px; padding:3px;}
+      .header-text{flex:1; text-align:left;}
+      .header-text h1{font-size:1.05rem;}
+      .header-text p{font-size:.65rem;}
+      .header-auth{gap:7px;}
+      .btn-login{padding:7px 12px; font-size:.78rem;}
+      .btn-register{padding:7px 12px; font-size:.78rem;}
+      .user-chip{padding:5px 10px 5px 6px;}
+      .hero{padding:36px 16px 44px;}
       .main-nav-inner{padding:0 8px;overflow-x:auto;}
       .nav-tab{padding:14px 12px;font-size:.78rem;}
       .topics-grid{padding:0 16px 60px;grid-template-columns:1fr;}
@@ -217,6 +259,7 @@
 
 <header>
   <div class="header-inner">
+    <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open menu">☰</button>
     <img src="Logo.png" alt="Green Livelihood Institute Logo" class="header-logo" />
     <div class="header-text">
       <h1>Green Livelihood Institute</h1>
@@ -235,6 +278,24 @@
     </div>
   </div>
 </header>
+
+<!-- MOBILE SLIDE-IN MENU -->
+<div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <span class="mobile-menu-title">📋 Menu</span>
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  </div>
+  <button class="mobile-nav-item active" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')">
+    <span class="m-icon">📚</span> Learning Pathways
+  </button>
+  <button class="mobile-nav-item" id="mob-tab-submit" onclick="mobileSwitchSection('submit')">
+    <span class="m-icon">✏️</span> Submit Your Work
+  </button>
+  <button class="mobile-nav-item" id="mob-tab-success" onclick="mobileSwitchSection('success')">
+    <span class="m-icon">🌟</span> Share Your Success Story
+  </button>
+</div>
 
 <section class="hero">
   <div class="hero-label">Learning &amp; Development Platform</div>
@@ -990,6 +1051,26 @@ document.addEventListener('keydown', function(e) {
 
   const s = getSession();
   if(s) updateAuthUI(s);
+
+/* ── Mobile menu ─────────────────────────────────────────────── */
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function mobileSwitchSection(name) {
+  showSection(name);
+  // update mobile active state
+  document.querySelectorAll('.mobile-nav-item').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('mob-tab-' + name);
+  if(btn) btn.classList.add('active');
+  closeMobileMenu();
+}
 
   const params = new URLSearchParams(window.location.search);
   const token  = params.get('reset');
