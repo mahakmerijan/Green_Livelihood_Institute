@@ -323,6 +323,15 @@
     .mobile-nav-item:hover { background:#f5f8ff; color:#1565C0; }
     .mobile-nav-item .m-icon { font-size:1.3rem; width:32px; text-align:center; }
     .mobile-nav-item.m-active { color:#1565C0; background:#f0f6ff; border-left:3px solid #1565C0; }
+    /* Mobile auth section inside menu */
+    .mob-auth-section { padding:14px 16px 10px; border-bottom:2px solid #e8eef5; background:#f9fbff; }
+    .mob-auth-section .mob-auth-buttons { display:flex; gap:8px; }
+    .mob-btn-login { flex:1; padding:10px; border:1.5px solid #1565C0; border-radius:9px; background:transparent; color:#1565C0; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; }
+    .mob-btn-register { flex:1; padding:10px; border:none; border-radius:9px; background:linear-gradient(135deg,#66BB6A,#2E7D32); color:#fff; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; box-shadow:0 2px 8px rgba(46,125,50,.3); }
+    .mob-user-row { display:none; align-items:center; gap:10px; }
+    .mob-user-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#66BB6A,#1565C0); display:flex; align-items:center; justify-content:center; font-size:.95rem; font-weight:700; color:#fff; flex-shrink:0; }
+    .mob-user-name { font-size:.88rem; font-weight:600; color:#1a2a3a; flex:1; }
+    .mob-btn-logout { padding:7px 14px; border:1px solid #e53935; border-radius:7px; background:transparent; color:#e53935; font-family:'Inter',sans-serif; font-size:.78rem; font-weight:600; cursor:pointer; }
     /* WAFFLE QUICK-ACCESS PANEL */
     .waffle-btn {
       background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.4);
@@ -393,7 +402,7 @@
     .quick-card-arrow { margin-left: auto; color: #c0cbd5; font-size: 1.1rem; flex-shrink: 0; transition: color .2s; font-weight: 700; }
     .quick-card:hover .quick-card-arrow { color: #1565C0; }
     .quick-sep { height: 1px; background: #edf0f4; margin: 4px 0; }
-    @media(max-width:700px) { .waffle-btn { display: none; } .explore-btn { display: none; } }
+    @media(max-width:700px) { .waffle-btn { display: none; } .explore-btn { display: none; } .header-auth { display:none !important; } .user-chip { display:none !important; } }
 
     /* RESPONSIVE */
     @media(max-width:700px){
@@ -462,6 +471,18 @@
   <div class="mobile-menu-header">
     <span class="mobile-menu-title">📋 Menu</span>
     <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  </div>
+  <!-- Mobile auth section -->
+  <div class="mob-auth-section" id="mobAuthSection">
+    <div class="mob-auth-buttons" id="mobAuthButtons">
+      <button class="mob-btn-login" onclick="closeMobileMenu();openAuthModal('login')">Log In</button>
+      <button class="mob-btn-register" onclick="closeMobileMenu();openAuthModal('register')">Register</button>
+    </div>
+    <div class="mob-user-row" id="mobUserRow">
+      <div class="mob-user-avatar" id="mobUserAvatar"></div>
+      <span class="mob-user-name" id="mobUserName"></span>
+      <button class="mob-btn-logout" onclick="closeMobileMenu();doLogout()">Log out</button>
+    </div>
   </div>
   <button class="mobile-nav-item m-active" id="mob-tab-home" onclick="mobileSwitchSection('home')"><span class="m-icon">🏠</span> Home</button>
   <button class="mobile-nav-item" id="mob-tab-about" onclick="mobileSwitchSection('about')"><span class="m-icon">👥</span> About Us</button>
@@ -1594,15 +1615,25 @@ function openQuickSection(name) { closeWaffle(); showSection(name); }
 function updateAuthUI(session) {
   const btnDiv=document.getElementById('authButtons');
   const chip=document.getElementById('userChip');
+  const mobBtns=document.getElementById('mobAuthButtons');
+  const mobRow=document.getElementById('mobUserRow');
   if(session) {
     const initials=session.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
     document.getElementById('userAvatar').textContent=initials;
     document.getElementById('userName').textContent=session.name.split(' ')[0];
     btnDiv.style.display='none';
     chip.style.display='flex';
+    if(mobBtns) mobBtns.style.display='none';
+    if(mobRow) {
+      document.getElementById('mobUserAvatar').textContent=initials;
+      document.getElementById('mobUserName').textContent=session.name.split(' ')[0];
+      mobRow.style.display='flex';
+    }
   } else {
     btnDiv.style.display='flex';
     chip.style.display='none';
+    if(mobBtns) mobBtns.style.display='flex';
+    if(mobRow) mobRow.style.display='none';
   }
 }
 
