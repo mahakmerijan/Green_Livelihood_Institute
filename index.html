@@ -462,10 +462,10 @@
     <span class="mobile-menu-title">📋 Menu</span>
     <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
   </div>
-  <button class="mobile-nav-item" id="mob-tab-home" onclick="mobileSwitchSection('home')"><span class="m-icon">🏠</span> Home</button>
+  <button class="mobile-nav-item m-active" id="mob-tab-home" onclick="mobileSwitchSection('home')"><span class="m-icon">🏠</span> Home</button>
   <button class="mobile-nav-item" id="mob-tab-about" onclick="mobileSwitchSection('about')"><span class="m-icon">👥</span> About Us</button>
   <button class="mobile-nav-item" id="mob-tab-services" onclick="mobileSwitchSection('services')"><span class="m-icon">🛠</span> Services</button>
-  <button class="mobile-nav-item m-active" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')"><span class="m-icon">📚</span> Knowledge Portals</button>
+  <button class="mobile-nav-item" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')"><span class="m-icon">📚</span> Knowledge Portals</button>
   <button class="mobile-nav-item" id="mob-tab-blog" onclick="mobileSwitchSection('blog')"><span class="m-icon">📝</span> Blog</button>
   <button class="mobile-nav-item" id="mob-tab-contact" onclick="mobileSwitchSection('contact')"><span class="m-icon">📞</span> Contact Us</button>
   <button class="mobile-nav-item" id="mob-tab-portal" onclick="mobileSwitchSection('portal')"><span class="m-icon">🔒</span> Client Portal</button>
@@ -482,6 +482,16 @@
     <button class="quick-panel-x" onclick="closeWaffle()">✕</button>
   </div>
   <div class="quick-cards">
+    <button class="quick-card" onclick="openQuickSection('services')">
+      <div class="quick-card-icon" style="background:#e8eaf6;">🛠</div>
+      <div class="quick-card-text"><h4>Services</h4><p>What we offer &amp; how we help</p></div>
+      <span class="quick-card-arrow">›</span>
+    </button>
+    <button class="quick-card" onclick="openQuickSection('pathways')">
+      <div class="quick-card-icon" style="background:#e3f2fd;">📚</div>
+      <div class="quick-card-text"><h4>Knowledge Portals</h4><p>Curated learning journeys</p></div>
+      <span class="quick-card-arrow">›</span>
+    </button>
     <button class="quick-card" onclick="openQuickSection('blog')">
       <div class="quick-card-icon" style="background:#fce4ec;">📝</div>
       <div class="quick-card-text"><h4>Blog</h4><p>Insights, news &amp; updates</p></div>
@@ -523,16 +533,14 @@
       Explore Us
     </button>
     <div class="nav-divider"></div>
-    <button class="nav-tab" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
+    <button class="nav-tab active" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
     <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
-    <button class="nav-tab" onclick="showSection('services')" id="tab-services"><span>🛠</span> Services</button>
-    <button class="nav-tab active" onclick="showSection('pathways')" id="tab-pathways"><span>📚</span> Knowledge Portals</button>
     <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
   </div>
 </nav>
 
 <!-- VIEW: LEARNING PATHWAYS -->
-<div class="view active" id="view-pathways">
+<div class="view" id="view-pathways">
   <div class="section-header">
     <h3>Learning Pathways</h3>
     <p>Select a topic to explore its video lessons and deepen your understanding.</p>
@@ -624,7 +632,7 @@
 </div>
 
 <!-- VIEW: HOME -->
-<div class="view" id="view-home">
+<div class="view active" id="view-home">
   <div class="section-header">
     <h3>Welcome to Green Livelihoods Institute</h3>
     <p>Empowering enterprises, individuals, and communities through knowledge, skills, and sustainable innovation.</p>
