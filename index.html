@@ -1264,6 +1264,7 @@
     <div class="admin-section active" id="asec-users">
       <div class="admin-section-title">Pending User Approvals</div>
       <div class="admin-section-sub">Review new registrations and approve or reject them. Approved users automatically receive a welcome email.</div>
+      <div class="av-alert" id="adminUsersAlert"></div>
       <div class="pending-wrap" id="pendingUsersWrap"></div>
     </div>
     <!-- Manage Videos Section -->
@@ -1644,17 +1645,36 @@ function renderPendingUsers() {
   wrap.innerHTML = html;
 }
 
-function approveUser(email) {
+function showAdminUsersAlert(msg, ok) {
+  const el = document.getElementById('adminUsersAlert');
+  if(!el) return;
+  el.textContent = msg;
+  el.className = 'av-alert show ' + (ok ? 'ok' : 'err');
+}
+
+async function approveUser(email) {
   const pending = getPendingUsers();
   const user    = pending[email];
   if(!user) return;
+
   const users = getUsers();
   users[email] = { name: user.name, pwHash: user.pwHash };
   saveUsers(users);
   delete pending[email];
   savePendingUsers(pending);
-  sendApprovalEmail(email, user.name);
   renderPendingUsers();
+
+  const result = await sendApprovalEmail(email, user.name);
+  if(result.ok) {
+    showAdminUsersAlert('✅ User approved and approval email sent to ' + email + '.', true);
+  } else {
+    const blocked = result.status === 403 && /non-browser environments is currently disabled/i.test(result.body || '');
+    if(blocked) {
+      showAdminUsersAlert('⚠️ User approved, but email was not sent. In EmailJS go to Account → Security and enable API access for this mode.', false);
+    } else {
+      showAdminUsersAlert('⚠️ User approved, but email failed (' + result.status + '). ' + (result.body || 'Please verify EmailJS template settings.'), false);
+    }
+  }
 }
 
 function rejectUser(email) {
@@ -1663,26 +1683,33 @@ function rejectUser(email) {
   delete pending[email];
   savePendingUsers(pending);
   renderPendingUsers();
+  showAdminUsersAlert('Registration rejected for ' + email + '.', true);
 }
 
-function sendApprovalEmail(email, name) {
+async function sendApprovalEmail(email, name) {
   const loginUrl = window.location.origin + window.location.pathname;
-  fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      service_id:  EMAILJS_SERVICE_ID,
-      template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
-      user_id:     EMAILJS_PUBLIC_KEY,
-      template_params: {
-        to_name:    name,
-        to_email:   email,
-        login_url:  loginUrl,
-        user_email: email,
-        site_name:  'Green Livelihood Institute'
-      }
-    })
-  }).catch(() => {}); // best-effort — failure is silent so UI remains responsive
+  try {
+    const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service_id:  EMAILJS_SERVICE_ID,
+        template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
+        user_id:     EMAILJS_PUBLIC_KEY,
+        template_params: {
+          to_name:    name,
+          to_email:   email,
+          login_url:  loginUrl,
+          user_email: email,
+          site_name:  'Green Livelihood Institute'
+        }
+      })
+    });
+    const body = await res.text();
+    return { ok: res.ok, status: res.status, body };
+  } catch (err) {
+    return { ok: false, status: 0, body: (err && err.message) ? err.message : 'Network error' };
+  }
 }
 
 /* ── Video management ─────────────────────────────────────────── */
