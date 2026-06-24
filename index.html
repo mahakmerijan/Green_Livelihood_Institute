@@ -404,6 +404,68 @@
     .quick-sep { height: 1px; background: #edf0f4; margin: 4px 0; }
     @media(max-width:700px) { .waffle-btn { display: none; } .explore-btn { display: none; } .header-auth { display:none !important; } .user-chip { display:none !important; } }
 
+    /* ── ADMIN PANEL ────────────────────────────────────────────── */
+    .admin-overlay { display:none; position:fixed; inset:0; background:#f0f4f8; z-index:1500; overflow-y:auto; flex-direction:column; }
+    .admin-overlay.active { display:flex; }
+    .admin-header { background:linear-gradient(135deg,#0D1B2A 0%,#1a3a6b 55%,#4a1070 100%); padding:18px 32px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:10; box-shadow:0 4px 20px rgba(0,0,0,.3); flex-shrink:0; }
+    .admin-header h2 { color:#fff; font-family:'Playfair Display',serif; font-size:1.35rem; margin:0; }
+    .admin-badge { background:linear-gradient(135deg,#e65100,#ffa726); color:#fff; font-size:.68rem; font-weight:700; letter-spacing:1.5px; padding:4px 10px; border-radius:20px; text-transform:uppercase; }
+    .btn-admin-logout { padding:8px 18px; border:1.5px solid rgba(255,255,255,.4); border-radius:8px; background:transparent; color:#fff; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:600; cursor:pointer; transition:var(--tr); }
+    .btn-admin-logout:hover { background:rgba(255,0,0,.2); border-color:rgba(255,100,100,.5); }
+    .admin-tabs { display:flex; gap:0; background:#fff; border-bottom:2px solid #e0e8f0; padding:0 32px; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+    .admin-tab-btn { padding:16px 28px; font-size:.9rem; font-weight:600; color:#667; border:none; border-bottom:3px solid transparent; background:none; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; margin-bottom:-2px; }
+    .admin-tab-btn:hover { color:#1a2a3a; background:#f7fafc; }
+    .admin-tab-btn.active { color:#1565C0; border-bottom-color:#1565C0; }
+    .admin-content { max-width:1100px; margin:0 auto; padding:32px; flex:1; width:100%; }
+    .admin-section { display:none; }
+    .admin-section.active { display:block; }
+    .admin-section-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:6px; }
+    .admin-section-sub { font-size:.88rem; color:#778; margin-bottom:28px; }
+    .pending-wrap { background:#fff; border-radius:var(--card-radius); box-shadow:var(--shadow-sm); overflow:hidden; }
+    .pending-table-head { display:grid; grid-template-columns:1.2fr 1.5fr 1fr auto auto; gap:12px; padding:13px 20px; background:#f8fafd; border-bottom:1px solid #e8eef5; font-size:.75rem; font-weight:700; color:#667; letter-spacing:.5px; text-transform:uppercase; }
+    .pending-row { display:grid; grid-template-columns:1.2fr 1.5fr 1fr auto auto; gap:12px; padding:14px 20px; border-bottom:1px solid #f0f4f8; align-items:center; }
+    .pending-row:last-child { border-bottom:none; }
+    .pending-row:hover { background:#fbfcff; }
+    .pending-name { font-size:.9rem; font-weight:600; color:var(--navy); }
+    .pending-email { font-size:.84rem; color:#556; }
+    .pending-date { font-size:.78rem; color:#aaa; white-space:nowrap; }
+    .pending-count-badge { display:inline-flex; align-items:center; justify-content:center; background:#e65100; color:#fff; border-radius:50%; min-width:20px; height:20px; font-size:.7rem; font-weight:700; margin-left:6px; padding:0 4px; }
+    .btn-approve { padding:7px 16px; background:linear-gradient(135deg,#2E7D32,#66BB6A); border:none; border-radius:8px; color:#fff; font-size:.8rem; font-weight:600; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; white-space:nowrap; }
+    .btn-approve:hover { filter:brightness(1.1); transform:translateY(-1px); }
+    .btn-reject { padding:7px 16px; background:linear-gradient(135deg,#b71c1c,#ef5350); border:none; border-radius:8px; color:#fff; font-size:.8rem; font-weight:600; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; white-space:nowrap; }
+    .btn-reject:hover { filter:brightness(1.1); transform:translateY(-1px); }
+    .admin-empty { text-align:center; padding:60px 32px; }
+    .admin-empty-icon { font-size:3rem; margin-bottom:14px; }
+    .admin-empty p { font-size:.95rem; color:#778; }
+    .video-mgmt-grid { display:grid; grid-template-columns:360px 1fr; gap:28px; align-items:start; }
+    .add-video-card { background:#fff; border-radius:var(--card-radius); padding:28px; box-shadow:var(--shadow-sm); }
+    .add-video-card h4 { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--navy); margin-bottom:20px; }
+    .av-group { margin-bottom:16px; }
+    .av-label { display:block; font-size:.8rem; font-weight:600; color:#334; margin-bottom:6px; }
+    .av-input, .av-select { width:100%; padding:10px 13px; border:1.5px solid #d0dbe8; border-radius:9px; font-family:'Inter',sans-serif; font-size:.88rem; color:#1a2a3a; outline:none; transition:var(--tr); background:#fafcff; }
+    .av-input:focus, .av-select:focus { border-color:#1565C0; box-shadow:0 0 0 3px rgba(21,101,192,.1); }
+    .av-hint { font-size:.74rem; color:#999; margin-top:4px; }
+    .btn-add-video { width:100%; padding:12px; border:none; border-radius:9px; background:linear-gradient(135deg,#1565C0,#42A5F5); color:#fff; font-family:'Inter',sans-serif; font-size:.92rem; font-weight:700; cursor:pointer; transition:var(--tr); }
+    .btn-add-video:hover { filter:brightness(1.08); transform:translateY(-1px); }
+    .av-alert { padding:9px 12px; border-radius:7px; font-size:.8rem; font-weight:500; margin-bottom:14px; display:none; }
+    .av-alert.show { display:block; }
+    .av-alert.ok  { background:#e8f5e9; color:#2E7D32; border:1px solid #a5d6a7; }
+    .av-alert.err { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+    .video-list-card { background:#fff; border-radius:var(--card-radius); padding:28px; box-shadow:var(--shadow-sm); }
+    .video-list-card h4 { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--navy); margin-bottom:20px; }
+    .vl-module { margin-bottom:24px; }
+    .vl-module:last-child { margin-bottom:0; }
+    .vl-module-label { font-size:.75rem; font-weight:700; color:#667; letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+    .vl-row { display:flex; align-items:center; gap:10px; padding:9px 12px; background:#f8fafd; border-radius:8px; margin-bottom:6px; }
+    .vl-ytid { font-size:.72rem; font-family:monospace; color:#1565C0; background:#e3f2fd; padding:2px 8px; border-radius:5px; flex-shrink:0; }
+    .vl-title { flex:1; font-size:.84rem; color:#334; }
+    .vl-badge { font-size:.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:2px 8px; border-radius:10px; flex-shrink:0; }
+    .vl-badge.default { background:#e8f5e9; color:#2E7D32; }
+    .vl-badge.custom  { background:#fff3e0; color:#E65100; }
+    .btn-del-video { padding:5px 12px; background:transparent; border:1px solid #ef9a9a; border-radius:7px; color:#c62828; font-size:.75rem; font-weight:600; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; flex-shrink:0; }
+    .btn-del-video:hover { background:#ffebee; }
+    .admin-footer-link { color:rgba(255,255,255,.3); font-size:.72rem; cursor:pointer; background:none; border:none; font-family:'Inter',sans-serif; transition:color .2s; text-decoration:none; }
+    .admin-footer-link:hover { color:rgba(255,255,255,.65); }
     /* RESPONSIVE */
     @media(max-width:700px){
       .hamburger-btn {
@@ -993,6 +1055,7 @@
   <div class="footer-name">Green Livelihoods Institute</div>
   <div class="footer-tagline">Growth, Learning and Innovation</div>
   <p>&copy; 2026 Green Livelihoods Institute. All rights reserved.</p>
+  <p style="margin-top:10px;"><button class="admin-footer-link" onclick="openAdminLogin()">Admin Access</button></p>
 </footer>
 
 <!-- ═══ AUTH MODALS ══════════════════════════════════════════ -->
@@ -1137,6 +1200,104 @@
   </div>
 </div>
 
+<!-- ADMIN LOGIN MODAL -->
+<div class="auth-overlay" id="authAdmin" onclick="closeAuthOnOverlay(event,'authAdmin')">
+  <div class="auth-box">
+    <div class="auth-header">
+      <div class="auth-icon">⛔</div>
+      <h2>Admin Login</h2>
+      <p>Restricted access — Green Livelihood Institute administrators only</p>
+    </div>
+    <div class="auth-body">
+      <div class="auth-alert" id="adminLoginAlert"></div>
+      <div class="form-group">
+        <label class="form-label" for="adminUser">Username</label>
+        <input class="form-input" id="adminUser" type="text" placeholder="Admin username" autocomplete="off" />
+        <div class="form-error" id="adminUserErr">Please enter the admin username.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="adminPass">Password</label>
+        <div class="pw-wrapper">
+          <input class="form-input" id="adminPass" type="password" placeholder="Admin password" autocomplete="off" />
+          <button class="pw-toggle" type="button" onclick="togglePw('adminPass',this)">Show</button>
+        </div>
+        <div class="form-error" id="adminPassErr">Please enter the admin password.</div>
+      </div>
+      <button class="btn-auth-submit" onclick="doAdminLogin()">Enter Admin Panel</button>
+    </div>
+    <div class="auth-footer">
+      <hr class="auth-divider"/>
+      <div class="auth-link-row"><button class="auth-link" onclick="closeAuthModals()">← Back to Site</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="adminPanel">
+  <div class="admin-header">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <h2>⚙️ Admin Panel</h2>
+      <span class="admin-badge">Administrator</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="color:rgba(255,255,255,.65);font-size:.82rem;">Green Livelihood Institute</span>
+      <button class="btn-admin-logout" onclick="doAdminLogout()">Log Out</button>
+    </div>
+  </div>
+  <div class="admin-tabs">
+    <button class="admin-tab-btn active" id="atab-users" onclick="switchAdminTab('users')">
+      👥 Pending Approvals <span class="pending-count-badge" id="pendingCountBadge" style="display:none;">0</span>
+    </button>
+    <button class="admin-tab-btn" id="atab-videos" onclick="switchAdminTab('videos')">
+      🎬 Manage Videos
+    </button>
+  </div>
+  <div class="admin-content">
+    <!-- Pending Users Section -->
+    <div class="admin-section active" id="asec-users">
+      <div class="admin-section-title">Pending User Approvals</div>
+      <div class="admin-section-sub">Review new registrations and approve or reject them. Approved users automatically receive a welcome email.</div>
+      <div class="pending-wrap" id="pendingUsersWrap"></div>
+    </div>
+    <!-- Manage Videos Section -->
+    <div class="admin-section" id="asec-videos">
+      <div class="admin-section-title">Manage Learning Videos</div>
+      <div class="admin-section-sub">Add custom videos to any Learning Pathways module, or remove ones you added previously.</div>
+      <div class="av-alert" id="avAlert"></div>
+      <div class="video-mgmt-grid">
+        <div class="add-video-card">
+          <h4>➕ Add New Video</h4>
+          <div class="av-group">
+            <label class="av-label">Module</label>
+            <select class="av-select" id="avModule">
+              <option value="">Select a module…</option>
+              <option value="basics">Module 01 – Back to Basics</option>
+              <option value="entrepreneurship">Module 02 – Entrepreneurship</option>
+              <option value="supplychain">Module 03 – Value-Based Supply Chain</option>
+              <option value="datascience">Module 04 – Data Science &amp; AI</option>
+              <option value="management">Module 05 – Management &amp; Consulting Tools</option>
+            </select>
+          </div>
+          <div class="av-group">
+            <label class="av-label">YouTube Video ID</label>
+            <input class="av-input" id="avYtId" placeholder="e.g. dQw4w9WgXcQ" />
+            <div class="av-hint">The ID is the part after <code>?v=</code> in the YouTube URL.</div>
+          </div>
+          <div class="av-group">
+            <label class="av-label">Video Title</label>
+            <input class="av-input" id="avTitle" placeholder="e.g. Basics – Session 3" />
+          </div>
+          <button class="btn-add-video" onclick="addAdminVideo()">Add Video to Module</button>
+        </div>
+        <div class="video-list-card">
+          <h4>📋 All Videos by Module</h4>
+          <div id="videoListWrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- VIDEO MODAL -->
 <div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
   <div class="modal-box">
@@ -1230,7 +1391,7 @@ function showSection(name) {
 }
 
 function showTopic(key) {
-  const topic=TOPICS[key];
+  const topic=getEffectiveTopics()[key];
   if(!topic) return;
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
@@ -1362,6 +1523,231 @@ function showFallback(fbId) {
   if (fb) fb.classList.add('show');
 }
 
+/* ══ ADMIN ══════════════════════════════════════════════════════ */
+// Credentials — change these before deploying to production.
+const ADMIN_CREDENTIALS = { username: 'admin', password: 'GLIAdmin@2026' };
+const ADMIN_SESSION_KEY = 'gli_admin_session';
+const PENDING_KEY       = 'gli_pending';
+const CUSTOM_TOPICS_KEY = 'gli_custom_topics';
+
+// Create a second EmailJS template for approval emails with variables:
+// {{to_name}}, {{to_email}}, {{login_url}}, {{site_name}}, {{user_email}}
+// Then paste its template ID below.
+const EMAILJS_APPROVAL_TEMPLATE_ID = 'template_approval'; // ← replace with your approval template ID
+
+/* ── Admin helpers ────────────────────────────────────────────── */
+function getAdminSession()  { try { return JSON.parse(sessionStorage.getItem(ADMIN_SESSION_KEY)||'null'); } catch(e){ return null; } }
+function saveAdminSession() { sessionStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({loggedIn:true})); }
+function clearAdminSession(){ sessionStorage.removeItem(ADMIN_SESSION_KEY); }
+
+function getPendingUsers()    { try { return JSON.parse(localStorage.getItem(PENDING_KEY)||'{}'); } catch(e){ return {}; } }
+function savePendingUsers(p)  { localStorage.setItem(PENDING_KEY, JSON.stringify(p)); }
+
+function getCustomTopics()    { try { return JSON.parse(localStorage.getItem(CUSTOM_TOPICS_KEY)||'{}'); } catch(e){ return {}; } }
+function saveCustomTopics(t)  { localStorage.setItem(CUSTOM_TOPICS_KEY, JSON.stringify(t)); }
+
+// Merges default TOPICS with any admin-added custom videos
+function getEffectiveTopics() {
+  const custom = getCustomTopics();
+  const merged = {};
+  Object.keys(TOPICS).forEach(k => {
+    merged[k] = { ...TOPICS[k], videos: [...TOPICS[k].videos] };
+    if (custom[k]) custom[k].forEach(v => merged[k].videos.push({ ...v, _custom: true }));
+  });
+  return merged;
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* ── Admin login / logout ─────────────────────────────────────── */
+function openAdminLogin() {
+  closeAuthModals();
+  document.getElementById('authAdmin').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function doAdminLogin() {
+  const u = document.getElementById('adminUser').value.trim();
+  const p = document.getElementById('adminPass').value;
+  let ok = true;
+  fieldErr('adminUser','adminUserErr', !u); if(!u) ok = false;
+  fieldErr('adminPass','adminPassErr', !p); if(!p) ok = false;
+  if(!ok) return;
+  if(u !== ADMIN_CREDENTIALS.username || p !== ADMIN_CREDENTIALS.password) {
+    showAlert('adminLoginAlert','Invalid admin credentials.','fail');
+    return;
+  }
+  saveAdminSession();
+  closeAuthModals();
+  openAdminPanel();
+}
+
+function doAdminLogout() {
+  clearAdminSession();
+  document.getElementById('adminPanel').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ── Admin panel ──────────────────────────────────────────────── */
+function openAdminPanel() {
+  if(!getAdminSession()) { openAdminLogin(); return; }
+  document.getElementById('adminPanel').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  switchAdminTab('users');
+}
+
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('atab-' + tab).classList.add('active');
+  document.getElementById('asec-' + tab).classList.add('active');
+  if(tab === 'users')  renderPendingUsers();
+  if(tab === 'videos') renderVideoList();
+}
+
+/* ── Pending user approvals ───────────────────────────────────── */
+function renderPendingUsers() {
+  const pending = getPendingUsers();
+  const wrap    = document.getElementById('pendingUsersWrap');
+  const badge   = document.getElementById('pendingCountBadge');
+  const count   = Object.keys(pending).length;
+  badge.style.display = count > 0 ? 'inline-flex' : 'none';
+  badge.textContent   = count;
+  if(count === 0) {
+    wrap.innerHTML = '<div class="admin-empty"><div class="admin-empty-icon">✅</div><p>No pending approvals. All registrations have been reviewed.</p></div>';
+    return;
+  }
+  let html = '<div class="pending-table-head"><span>Name</span><span>Email</span><span>Registered</span><span></span><span></span></div>';
+  Object.entries(pending).forEach(([email, u]) => {
+    const date = u.registeredAt
+      ? new Date(u.registeredAt).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})
+      : '—';
+    html += `<div class="pending-row">
+      <div class="pending-name">${escHtml(u.name)}</div>
+      <div class="pending-email">${escHtml(email)}</div>
+      <div class="pending-date">${date}</div>
+      <button class="btn-approve" onclick="approveUser('${escHtml(email)}')">✓ Approve</button>
+      <button class="btn-reject"  onclick="rejectUser('${escHtml(email)}')">✕ Reject</button>
+    </div>`;
+  });
+  wrap.innerHTML = html;
+}
+
+function approveUser(email) {
+  const pending = getPendingUsers();
+  const user    = pending[email];
+  if(!user) return;
+  const users = getUsers();
+  users[email] = { name: user.name, pwHash: user.pwHash };
+  saveUsers(users);
+  delete pending[email];
+  savePendingUsers(pending);
+  sendApprovalEmail(email, user.name);
+  renderPendingUsers();
+}
+
+function rejectUser(email) {
+  if(!confirm('Reject and delete the registration for ' + email + '?\nThis cannot be undone.')) return;
+  const pending = getPendingUsers();
+  delete pending[email];
+  savePendingUsers(pending);
+  renderPendingUsers();
+}
+
+function sendApprovalEmail(email, name) {
+  const loginUrl = window.location.origin + window.location.pathname;
+  fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id:  EMAILJS_SERVICE_ID,
+      template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
+      user_id:     EMAILJS_PUBLIC_KEY,
+      template_params: {
+        to_name:    name,
+        to_email:   email,
+        login_url:  loginUrl,
+        user_email: email,
+        site_name:  'Green Livelihood Institute'
+      }
+    })
+  }).catch(() => {}); // best-effort — failure is silent so UI remains responsive
+}
+
+/* ── Video management ─────────────────────────────────────────── */
+function renderVideoList() {
+  const merged = getEffectiveTopics();
+  const custom = getCustomTopics();
+  const wrap   = document.getElementById('videoListWrap');
+  let html = '';
+  Object.entries(merged).forEach(([key, topic]) => {
+    html += `<div class="vl-module"><div class="vl-module-label">${escHtml(topic.icon)} ${escHtml(topic.title)}</div>`;
+    topic.videos.forEach((v, idx) => {
+      const isCustom = !!v._custom;
+      const defaultLen = TOPICS[key].videos.length;
+      const customIdx  = idx - defaultLen;
+      html += `<div class="vl-row">
+        <span class="vl-ytid">${escHtml(v.ytId)}</span>
+        <span class="vl-title">${escHtml(v.title)}</span>
+        <span class="vl-badge ${isCustom?'custom':'default'}">${isCustom?'Custom':'Default'}</span>
+        ${isCustom
+          ? `<button class="btn-del-video" onclick="removeAdminVideo('${escHtml(key)}',${customIdx})">✕ Remove</button>`
+          : '<span style="width:76px;flex-shrink:0;"></span>'}
+      </div>`;
+    });
+    html += '</div>';
+  });
+  wrap.innerHTML = html;
+}
+
+function addAdminVideo() {
+  const moduleKey = document.getElementById('avModule').value;
+  const ytId      = document.getElementById('avYtId').value.trim();
+  const title     = document.getElementById('avTitle').value.trim();
+  const alertEl   = document.getElementById('avAlert');
+  alertEl.className = 'av-alert';
+  if(!moduleKey || !ytId || !title) {
+    alertEl.textContent = 'Please fill in all three fields.';
+    alertEl.className = 'av-alert show err'; return;
+  }
+  if(!/^[A-Za-z0-9_-]{6,15}$/.test(ytId)) {
+    alertEl.textContent = 'That doesn\'t look like a valid YouTube video ID (6–15 alphanumeric chars, _ or -).';
+    alertEl.className = 'av-alert show err'; return;
+  }
+  const custom = getCustomTopics();
+  if(!custom[moduleKey]) custom[moduleKey] = [];
+  custom[moduleKey].push({ ytId, title });
+  saveCustomTopics(custom);
+  document.getElementById('avYtId').value   = '';
+  document.getElementById('avTitle').value  = '';
+  document.getElementById('avModule').value = '';
+  alertEl.textContent = '✅ Video added successfully!';
+  alertEl.className = 'av-alert show ok';
+  renderVideoList();
+  setTimeout(() => { alertEl.className = 'av-alert'; }, 3000);
+}
+
+function removeAdminVideo(key, customIdx) {
+  const custom = getCustomTopics();
+  if(!custom[key] || customIdx < 0 || customIdx >= custom[key].length) return;
+  const v = custom[key][customIdx];
+  if(!confirm('Remove "' + v.title + '" from this module?')) return;
+  custom[key].splice(customIdx, 1);
+  if(custom[key].length === 0) delete custom[key];
+  saveCustomTopics(custom);
+  renderVideoList();
+}
+
+// Enter key support on admin login inputs
+document.addEventListener('keydown', function(e) {
+  if(e.key !== 'Enter') return;
+  if(document.getElementById('authAdmin').classList.contains('active')) doAdminLogin();
+});
+
 /* ══ AUTH ══════════════════════════════════════════════════════ */
 /* ── EmailJS Configuration ────────────────────────────────────
    Sign up free at https://www.emailjs.com/
@@ -1445,14 +1831,14 @@ function doRegister() {
   fieldErr('regConfirm','regConfirmErr',pw!==cf); if(pw!==cf) ok=false;
   if(!ok) return;
   const users=getUsers();
+  const pending=getPendingUsers();
   if(users[email]) { showAlert('registerAlert','An account with this email already exists.','fail'); return; }
-  // Store a simple hash: NOTE — passwords stored in localStorage are NOT secure for production.
-  // This is a client-side demo. A real app requires a server-side backend with hashed passwords.
-  users[email]={name, pwHash: btoa(unescape(encodeURIComponent(pw)))};
-  saveUsers(users);
-  saveSession({email, name});
-  closeAuthModals();
-  updateAuthUI({email, name});
+  if(pending[email]) { showAlert('registerAlert','Your registration is already pending admin approval. Please wait for the approval email.','fail'); return; }
+  // Place user in pending queue — admin must approve before they can log in.
+  pending[email]={ name, pwHash: btoa(unescape(encodeURIComponent(pw))), registeredAt: Date.now() };
+  savePendingUsers(pending);
+  showAlert('registerAlert','✅ Registration submitted! Your account is pending admin approval. You’ll receive an email at this address once your account is activated.','success');
+  ['regName','regEmail','regPassword','regConfirm'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
 }
 
 function doLogin() {
@@ -1462,6 +1848,12 @@ function doLogin() {
   fieldErr('loginEmail','loginEmailErr',!isValidEmail(email)); if(!isValidEmail(email)) ok=false;
   fieldErr('loginPassword','loginPasswordErr',!pw); if(!pw) ok=false;
   if(!ok) return;
+  // Check if user is in the pending queue
+  const pending=getPendingUsers();
+  if(pending[email]) {
+    showAlert('loginAlert','⏳ Your account is pending admin approval. You’ll receive an email once it’s activated.','fail');
+    return;
+  }
   const users=getUsers();
   const user=users[email];
   if(!user || user.pwHash !== btoa(unescape(encodeURIComponent(pw)))) {
