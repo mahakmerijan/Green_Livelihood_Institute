@@ -12,6 +12,10 @@ const EMAILJS_PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY;
 
 app.use(express.json());
 
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 // Keep CORS permissive for local development, including file:// origin.
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -68,5 +72,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`GLI app running on http://localhost:${PORT}`);
+  const host = process.env.RENDER_EXTERNAL_URL || process.env.RAILWAY_STATIC_URL || `localhost:${PORT}`;
+  const protocol = host.startsWith('http') ? '' : 'http://';
+  console.log(`GLI app running on ${protocol}${host}`);
 });

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: green-livelihood-institute
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: EMAILJS_SERVICE_ID
+        value: service_9ko6lao
+      - key: EMAILJS_APPROVAL_TEMPLATE_ID
+        value: template_gvp6exk
+      - key: EMAILJS_PUBLIC_KEY
+        value: 8RVJ1Y6zL-VvkLeE1
+      - key: EMAILJS_PRIVATE_KEY
+        sync: false
