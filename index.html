@@ -1541,7 +1541,7 @@ const CUSTOM_TOPICS_KEY = 'gli_custom_topics';
 // Create a second EmailJS template for approval emails with variables:
 // {{to_name}}, {{to_email}}, {{login_url}}, {{site_name}}, {{user_email}}
 // Then paste its template ID below.
-const EMAILJS_APPROVAL_TEMPLATE_ID = 'template_sqnyufo';
+const EMAILJS_APPROVAL_TEMPLATE_ID = 'template_gvp6exk';
 
 /* ── Admin helpers ────────────────────────────────────────────── */
 function getAdminSession()  { try { return JSON.parse(sessionStorage.getItem(ADMIN_SESSION_KEY)||'null'); } catch(e){ return null; } }
@@ -1688,21 +1688,19 @@ function rejectUser(email) {
 
 async function sendApprovalEmail(email, name) {
   const loginUrl = window.location.origin + window.location.pathname;
+  const apiUrl = window.location.protocol === 'file:'
+    ? 'http://localhost:3000/api/send-approval-email'
+    : '/api/send-approval-email';
   try {
-    const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const res = await fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        service_id:  EMAILJS_SERVICE_ID,
-        template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
-        user_id:     EMAILJS_PRIVATE_KEY,
-        template_params: {
-          to_name:    name,
-          to_email:   email,
-          login_url:  loginUrl,
-          user_email: email,
-          site_name:  'Green Livelihood Institute'
-        }
+        to_name: name,
+        to_email: email,
+        login_url: loginUrl,
+        user_email: email,
+        site_name: 'Green Livelihood Institute'
       })
     });
     const body = await res.text();
@@ -1791,9 +1789,8 @@ document.addEventListener('keydown', function(e) {
    3. Paste your IDs below.
 ──────────────────────────────────────────────────────────── */
 const EMAILJS_SERVICE_ID  = 'service_9ko6lao';
-const EMAILJS_TEMPLATE_ID = 'template_usepzvw';
+const EMAILJS_TEMPLATE_ID = 'template_uespzvw';
 const EMAILJS_PUBLIC_KEY  = '8RVJ1Y6zL-VvkLeE1';
-const EMAILJS_PRIVATE_KEY = 'GV4yqC0PopfgjDjzuaPlb'; // For non-browser API calls (strict mode)
 
 const USERS_KEY = 'gli_users';
 const SESSION_KEY = 'gli_session';
