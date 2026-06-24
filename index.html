@@ -33,6 +33,8 @@
     .header-auth { display:flex; align-items:center; gap:10px; flex-shrink:0; }
     .btn-login { padding:9px 20px; border:1.5px solid rgba(255,255,255,.45); border-radius:9px; background:transparent; color:#fff; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; transition:var(--tr); white-space:nowrap; }
     .btn-login:hover { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.7); }
+    .btn-admin-top { padding:9px 16px; border:1.5px dashed rgba(255,255,255,.55); border-radius:9px; background:rgba(0,0,0,.12); color:#fff; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:700; letter-spacing:.3px; cursor:pointer; transition:var(--tr); white-space:nowrap; }
+    .btn-admin-top:hover { background:rgba(0,0,0,.26); border-color:rgba(255,255,255,.8); }
     .btn-register { padding:9px 20px; border:none; border-radius:9px; background:linear-gradient(135deg,#66BB6A,#2E7D32); color:#fff; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; transition:var(--tr); box-shadow:0 4px 14px rgba(46,125,50,.4); white-space:nowrap; }
     .btn-register:hover { filter:brightness(1.1); transform:translateY(-1px); }
     /* USER CHIP (shown after login) */
@@ -328,6 +330,7 @@
     .mob-auth-section .mob-auth-buttons { display:flex; gap:8px; }
     .mob-btn-login { flex:1; padding:10px; border:1.5px solid #1565C0; border-radius:9px; background:transparent; color:#1565C0; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; }
     .mob-btn-register { flex:1; padding:10px; border:none; border-radius:9px; background:linear-gradient(135deg,#66BB6A,#2E7D32); color:#fff; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; box-shadow:0 2px 8px rgba(46,125,50,.3); }
+    .mob-btn-admin { width:100%; margin-top:8px; padding:9px 10px; border:1.5px dashed #6A1B9A; border-radius:9px; background:#f5e9fb; color:#6A1B9A; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; }
     .mob-user-row { display:none; align-items:center; gap:10px; }
     .mob-user-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#66BB6A,#1565C0); display:flex; align-items:center; justify-content:center; font-size:.95rem; font-weight:700; color:#fff; flex-shrink:0; }
     .mob-user-name { font-size:.88rem; font-weight:600; color:#1a2a3a; flex:1; }
@@ -517,6 +520,7 @@
     <div class="header-auth" id="authButtons">
       <button class="btn-login" onclick="openAuthModal('login')">Log In</button>
       <button class="btn-register" onclick="openAuthModal('register')">Register</button>
+      <button class="btn-admin-top" onclick="openAdminLogin()">Admin</button>
     </div>
     <!-- User chip (logged in) -->
     <div class="user-chip" id="userChip">
@@ -540,6 +544,7 @@
       <button class="mob-btn-login" onclick="closeMobileMenu();openAuthModal('login')">Log In</button>
       <button class="mob-btn-register" onclick="closeMobileMenu();openAuthModal('register')">Register</button>
     </div>
+    <button class="mob-btn-admin" onclick="closeMobileMenu();openAdminLogin()">Admin Login</button>
     <div class="mob-user-row" id="mobUserRow">
       <div class="mob-user-avatar" id="mobUserAvatar"></div>
       <span class="mob-user-name" id="mobUserName"></span>
@@ -1091,6 +1096,8 @@
         <button class="auth-link" onclick="switchAuth('forgot')">Forgot password?</button>
         &nbsp;·&nbsp;
         Don't have an account? <button class="auth-link" onclick="switchAuth('register')">Register</button>
+        &nbsp;·&nbsp;
+        <button class="auth-link" onclick="openAdminLogin()">Admin Login</button>
       </div>
     </div>
   </div>
