@@ -1695,7 +1695,7 @@ async function sendApprovalEmail(email, name) {
       body: JSON.stringify({
         service_id:  EMAILJS_SERVICE_ID,
         template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
-        user_id:     EMAILJS_PUBLIC_KEY,
+        user_id:     EMAILJS_PRIVATE_KEY,
         template_params: {
           to_name:    name,
           to_email:   email,
@@ -1793,6 +1793,7 @@ document.addEventListener('keydown', function(e) {
 const EMAILJS_SERVICE_ID  = 'service_9ko6lao';
 const EMAILJS_TEMPLATE_ID = 'template_usepzvw';
 const EMAILJS_PUBLIC_KEY  = '8RVJ1Y6zL-VvkLeE1';
+const EMAILJS_PRIVATE_KEY = 'GV4yqC0PopfgjDjzuaPlb'; // For non-browser API calls (strict mode)
 
 const USERS_KEY = 'gli_users';
 const SESSION_KEY = 'gli_session';
