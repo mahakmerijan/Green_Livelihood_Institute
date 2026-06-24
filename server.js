@@ -44,7 +44,6 @@ app.post('/api/send-approval-email', async (req, res) => {
         template_id: EMAILJS_APPROVAL_TEMPLATE_ID,
         user_id: EMAILJS_PUBLIC_KEY,
         private_key: EMAILJS_PRIVATE_KEY,
-        accessToken: EMAILJS_PRIVATE_KEY,
         template_params: {
           to_name,
           to_email,
