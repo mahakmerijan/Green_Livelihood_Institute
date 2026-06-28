@@ -80,15 +80,15 @@
     .hero h2 span { background:linear-gradient(90deg,#66BB6A,#42A5F5,#FFA726); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .hero p { font-size:1.05rem; color:rgba(255,255,255,.72); max-width:600px; margin:0 auto; line-height:1.7; }
     /* MAIN NAV */
-    .main-nav { background:#fff; border-bottom:1px solid #e0e8f0; box-shadow:0 2px 12px rgba(0,0,0,.06); position:sticky; top:97px; z-index:100; overflow-x:auto; height:60px; }
+    .main-nav { background:#fff; border-bottom:1px solid #e0e8f0; box-shadow:0 2px 16px rgba(0,0,0,.07); position:sticky; top:97px; z-index:100; overflow-x:auto; height:64px; }
     .main-nav-inner { max-width:1280px; margin:0 auto; padding:0 32px; display:flex; gap:0; align-items:stretch; justify-content:space-between; white-space:nowrap; position:relative; }
-    .nav-tabs-center { display:flex; align-items:stretch; gap:0; position:absolute; left:50%; transform:translateX(-50%); height:100%; }
+    .nav-tabs-center { display:flex; align-items:center; gap:6px; position:absolute; left:50%; transform:translateX(-50%); height:100%; }
     .nav-right { display:flex; align-items:center; margin-left:auto; }
-    .nav-tab { display:flex; align-items:center; gap:9px; padding:18px 28px; font-size:.92rem; font-weight:600; color:#667; border:none; background:none; cursor:pointer; border-bottom:3px solid transparent; transition:var(--tr); white-space:nowrap; font-family:'Inter',sans-serif; }
-    .nav-tab:hover { color:#1a2a3a; background:#f7fafc; }
-    .nav-tab.active { color:#1565C0; border-bottom-color:#1565C0; background:#f0f6ff; }
-    .nav-tab.tab-submit.active { color:#C62828; border-bottom-color:#C62828; background:#fff5f5; }
-    .nav-tab.tab-success.active { color:#E65100; border-bottom-color:#E65100; background:#fff8f0; }
+    .nav-tab { display:flex; align-items:center; gap:8px; padding:9px 22px; font-size:.88rem; font-weight:600; color:#5a6a7a; border:none; background:transparent; cursor:pointer; border-radius:50px; border-bottom:none; transition:color .25s ease, background .25s ease, box-shadow .25s ease, transform .15s ease; white-space:nowrap; font-family:'Inter',sans-serif; letter-spacing:.2px; }
+    .nav-tab span { font-size:1rem; }
+    .nav-tab:hover { color:#1a2a3a; background:#f0f4f8; transform:translateY(-1px); box-shadow:0 2px 8px rgba(0,0,0,.07); }
+    .nav-tab.active { color:#fff; background:linear-gradient(135deg,#1565C0,#42A5F5); box-shadow:0 4px 16px rgba(21,101,192,.35); transform:translateY(-1px); border-bottom:none; }
+    .nav-tab.tab-story.active { color:#fff; background:linear-gradient(135deg,#2E7D32,#66BB6A); box-shadow:0 4px 16px rgba(46,125,50,.35); }
     /* VIEWS */
     .view { display:none; animation:fadeSlide .3s ease; }
     .view.active { display:block; }
@@ -571,7 +571,7 @@
     <div class="nav-tabs-center">
       <button class="nav-tab active" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
       <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
-      <button class="nav-tab" onclick="showSection('story')" id="tab-story"><span>✨</span> Share Your Story</button>
+      <button class="nav-tab tab-story" onclick="showSection('story')" id="tab-story"><span>✨</span> Share Your Story</button>
       <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
     </div>
   </div>
