@@ -75,4 +75,17 @@ app.listen(PORT, () => {
   const host = process.env.RENDER_EXTERNAL_URL || process.env.RAILWAY_STATIC_URL || `localhost:${PORT}`;
   const protocol = host.startsWith('http') ? '' : 'http://';
   console.log(`GLI app running on ${protocol}${host}`);
+
+  // Self-ping every 60 seconds to prevent Render free-tier spin-down
+  const SELF_URL = process.env.RENDER_EXTERNAL_URL
+    ? `${process.env.RENDER_EXTERNAL_URL}/healthz`
+    : null;
+
+  if (SELF_URL) {
+    setInterval(() => {
+      fetch(SELF_URL)
+        .then(() => console.log(`[keep-alive] pinged ${SELF_URL}`))
+        .catch(err => console.warn(`[keep-alive] ping failed: ${err.message}`));
+    }, 60 * 1000);
+  }
 });
