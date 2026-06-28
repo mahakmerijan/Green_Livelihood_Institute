@@ -469,6 +469,40 @@
     .btn-del-video:hover { background:#ffebee; }
     .admin-footer-link { color:rgba(255,255,255,.3); font-size:.72rem; cursor:pointer; background:none; border:none; font-family:'Inter',sans-serif; transition:color .2s; text-decoration:none; }
     .admin-footer-link:hover { color:rgba(255,255,255,.65); }
+    /* ── ABOUT US ADMIN ─────────────────────────────────────────── */
+    .about-admin-wrap { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start; }
+    .about-admin-card { background:#fff; border-radius:var(--card-radius); padding:28px; box-shadow:var(--shadow-sm); }
+    .about-admin-card h4 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--navy); margin-bottom:18px; }
+    .about-admin-card textarea { width:100%; padding:11px 13px; border:1.5px solid #d0dbe8; border-radius:9px; font-family:'Inter',sans-serif; font-size:.88rem; color:#1a2a3a; outline:none; resize:vertical; min-height:130px; transition:var(--tr); background:#fafcff; }
+    .about-admin-card textarea:focus { border-color:#1565C0; box-shadow:0 0 0 3px rgba(21,101,192,.1); }
+    .btn-save-about { width:100%; padding:12px; border:none; border-radius:9px; background:linear-gradient(135deg,#1565C0,#42A5F5); color:#fff; font-family:'Inter',sans-serif; font-size:.92rem; font-weight:700; cursor:pointer; transition:var(--tr); margin-top:14px; }
+    .btn-save-about:hover { filter:brightness(1.08); transform:translateY(-1px); }
+    .team-admin-list { display:flex; flex-direction:column; gap:10px; margin-bottom:18px; max-height:320px; overflow-y:auto; }
+    .team-admin-row { display:grid; grid-template-columns:48px 1fr auto; gap:12px; align-items:center; background:#f8fafd; border-radius:10px; padding:10px 14px; }
+    .team-admin-avatar { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:700; color:#fff; flex-shrink:0; }
+    .team-admin-info { min-width:0; }
+    .team-admin-name { font-size:.88rem; font-weight:700; color:var(--navy); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .team-admin-role { font-size:.75rem; color:#778; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .team-admin-actions { display:flex; gap:6px; }
+    .btn-edit-member { padding:5px 12px; background:#e3f2fd; border:none; border-radius:7px; color:#1565C0; font-size:.75rem; font-weight:600; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; }
+    .btn-edit-member:hover { background:#bbdefb; }
+    .btn-del-member { padding:5px 12px; background:transparent; border:1px solid #ef9a9a; border-radius:7px; color:#c62828; font-size:.75rem; font-weight:600; cursor:pointer; transition:var(--tr); font-family:'Inter',sans-serif; }
+    .btn-del-member:hover { background:#ffebee; }
+    .team-member-form { background:#f8fafd; border-radius:12px; padding:18px; margin-top:4px; }
+    .team-member-form .av-group { margin-bottom:12px; }
+    .team-member-form .av-group:last-child { margin-bottom:0; }
+    .color-picker-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+    .color-swatch { width:28px; height:28px; border-radius:50%; cursor:pointer; border:3px solid transparent; transition:transform .15s, border-color .15s; }
+    .color-swatch.selected, .color-swatch:hover { transform:scale(1.2); border-color:#1565C0; }
+    .btn-save-member { width:100%; padding:11px; border:none; border-radius:9px; background:linear-gradient(135deg,#2E7D32,#66BB6A); color:#fff; font-family:'Inter',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; transition:var(--tr); margin-top:12px; }
+    .btn-save-member:hover { filter:brightness(1.08); }
+    .btn-cancel-member { width:100%; padding:9px; border:1px solid #d0dbe8; border-radius:9px; background:#fff; color:#667; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer; transition:var(--tr); margin-top:6px; }
+    .btn-cancel-member:hover { background:#f0f4f8; }
+    .about-av-alert { padding:9px 12px; border-radius:7px; font-size:.8rem; font-weight:500; margin-bottom:14px; display:none; }
+    .about-av-alert.show { display:block; }
+    .about-av-alert.ok  { background:#e8f5e9; color:#2E7D32; border:1px solid #a5d6a7; }
+    .about-av-alert.err { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+    @media(max-width:860px) { .about-admin-wrap { grid-template-columns:1fr; } }
     /* RESPONSIVE */
     @media(max-width:700px){
       .hamburger-btn {
@@ -731,7 +765,7 @@
     <div class="about-intro">
       <div class="about-intro-text">
         <h3>Who We Are</h3>
-        <p>Green Livelihoods Institute (GLI) is a centre for knowledge, attitude, skills, and impact. We work at the intersection of enterprise development, sustainable agriculture, digital innovation, and grassroots capacity building. Our multidisciplinary team brings together practitioners, policy experts, and technologists united by a common purpose — creating equitable and sustainable livelihoods.</p>
+        <p id="whoWeAreText">Green Livelihoods Institute (GLI) is a centre for knowledge, attitude, skills, and impact. We work at the intersection of enterprise development, sustainable agriculture, digital innovation, and grassroots capacity building. Our multidisciplinary team brings together practitioners, policy experts, and technologists united by a common purpose — creating equitable and sustainable livelihoods.</p>
       </div>
       <div class="about-stats">
         <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Learners Trained</div></div>
@@ -741,32 +775,7 @@
       </div>
     </div>
     <div class="section-header" style="padding:0 0 24px;"><h3 style="font-size:1.5rem;">Our Team</h3></div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar" style="background:linear-gradient(135deg,#1565C0,#42A5F5);">MK</div>
-        <div class="team-name">Mahak Merijan</div>
-        <div class="team-role">Founder & Director</div>
-        <div class="team-bio">Visionary leader with 15+ years in enterprise development, policy consulting, and sustainable livelihoods across South Asia.</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">AR</div>
-        <div class="team-name">Anita Rao</div>
-        <div class="team-role">Head of Learning & Curriculum</div>
-        <div class="team-bio">Education specialist with deep expertise in adult learning, competency frameworks, and experiential pedagogy.</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:linear-gradient(135deg,#E65100,#FFA726);">SP</div>
-        <div class="team-name">Suresh Patil</div>
-        <div class="team-role">Supply Chain Consultant</div>
-        <div class="team-bio">20 years of experience designing value-based supply chains for agriculture and MSME sectors across India.</div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">PD</div>
-        <div class="team-name">Priya Desai</div>
-        <div class="team-role">Data Science & AI Lead</div>
-        <div class="team-bio">Data scientist and AI practitioner bridging the gap between cutting-edge technology and grassroots application.</div>
-      </div>
-    </div>
+    <div class="team-grid" id="teamGrid"></div>
   </div>
 </div>
 
@@ -1235,6 +1244,9 @@
     <button class="admin-tab-btn" id="atab-videos" onclick="switchAdminTab('videos')">
       🎬 Manage Videos
     </button>
+    <button class="admin-tab-btn" id="atab-about" onclick="switchAdminTab('about')">
+      👥 About Us
+    </button>
   </div>
   <div class="admin-content">
     <!-- Pending Users Section -->
@@ -1277,6 +1289,57 @@
         <div class="video-list-card">
           <h4>📋 All Videos by Module</h4>
           <div id="videoListWrap"></div>
+        </div>
+      </div>
+    </div>
+    <!-- About Us Section -->
+    <div class="admin-section" id="asec-about">
+      <div class="admin-section-title">Edit About Us Page</div>
+      <div class="admin-section-sub">Update the "Who We Are" text and manage team members shown on the About Us page.</div>
+      <div class="about-av-alert" id="aboutAlert"></div>
+      <div class="about-admin-wrap">
+        <!-- Who We Are -->
+        <div class="about-admin-card">
+          <h4>📝 Who We Are</h4>
+          <div class="av-group">
+            <label class="av-label">Paragraph Text</label>
+            <textarea id="aboutWhoWeAre" rows="6"></textarea>
+          </div>
+          <button class="btn-save-about" onclick="saveWhoWeAre()">Save Changes</button>
+        </div>
+        <!-- Team Members -->
+        <div class="about-admin-card">
+          <h4>👥 Our Team</h4>
+          <div class="team-admin-list" id="teamAdminList"></div>
+          <div id="teamMemberForm" style="display:none;">
+            <div class="team-member-form">
+              <input type="hidden" id="editMemberIndex" value="-1" />
+              <div class="av-group">
+                <label class="av-label">Full Name</label>
+                <input class="av-input" id="memberName" placeholder="e.g. Mahak Merijan" />
+              </div>
+              <div class="av-group">
+                <label class="av-label">Initials (shown in avatar)</label>
+                <input class="av-input" id="memberInitials" placeholder="e.g. MK" maxlength="3" />
+              </div>
+              <div class="av-group">
+                <label class="av-label">Role / Designation</label>
+                <input class="av-input" id="memberRole" placeholder="e.g. Founder & Director" />
+              </div>
+              <div class="av-group">
+                <label class="av-label">Bio</label>
+                <textarea class="av-input" id="memberBio" rows="3" placeholder="Short bio…" style="resize:vertical;"></textarea>
+              </div>
+              <div class="av-group">
+                <label class="av-label">Avatar Colour</label>
+                <div class="color-picker-row" id="colorPickerRow"></div>
+                <input type="hidden" id="memberColor" value="linear-gradient(135deg,#1565C0,#42A5F5)" />
+              </div>
+              <button class="btn-save-member" onclick="saveMember()">Save Member</button>
+              <button class="btn-cancel-member" onclick="cancelMemberForm()">Cancel</button>
+            </div>
+          </div>
+          <button class="btn-add-video" style="margin-top:10px;" onclick="openAddMember()">➕ Add Team Member</button>
         </div>
       </div>
     </div>
@@ -1592,6 +1655,7 @@ function switchAdminTab(tab) {
   document.getElementById('asec-' + tab).classList.add('active');
   if(tab === 'users')  renderPendingUsers();
   if(tab === 'videos') renderVideoList();
+  if(tab === 'about')  openAboutAdmin();
 }
 
 /* ── Pending user approvals ───────────────────────────────────── */
@@ -2107,6 +2171,185 @@ function submitContactForm() {
     }, 200);
   }
 })();
+
+/* ── About Us Admin ──────────────────────────────────────────── */
+const ABOUT_DEFAULT_MEMBERS = [
+  { name:'Mahak Merijan', initials:'MK', role:'Founder & Director', bio:'Visionary leader with 15+ years in enterprise development, policy consulting, and sustainable livelihoods across South Asia.', color:'linear-gradient(135deg,#1565C0,#42A5F5)' },
+  { name:'Anita Rao', initials:'AR', role:'Head of Learning & Curriculum', bio:'Education specialist with deep expertise in adult learning, competency frameworks, and experiential pedagogy.', color:'linear-gradient(135deg,#2E7D32,#66BB6A)' },
+  { name:'Suresh Patil', initials:'SP', role:'Supply Chain Consultant', bio:'20 years of experience designing value-based supply chains for agriculture and MSME sectors across India.', color:'linear-gradient(135deg,#E65100,#FFA726)' },
+  { name:'Priya Desai', initials:'PD', role:'Data Science & AI Lead', bio:'Data scientist and AI practitioner bridging the gap between cutting-edge technology and grassroots application.', color:'linear-gradient(135deg,#6A1B9A,#AB47BC)' }
+];
+const ABOUT_DEFAULT_WHO = 'Green Livelihoods Institute (GLI) is a centre for knowledge, attitude, skills, and impact. We work at the intersection of enterprise development, sustainable agriculture, digital innovation, and grassroots capacity building. Our multidisciplinary team brings together practitioners, policy experts, and technologists united by a common purpose — creating equitable and sustainable livelihoods.';
+const AVATAR_COLORS = [
+  'linear-gradient(135deg,#1565C0,#42A5F5)',
+  'linear-gradient(135deg,#2E7D32,#66BB6A)',
+  'linear-gradient(135deg,#E65100,#FFA726)',
+  'linear-gradient(135deg,#6A1B9A,#AB47BC)',
+  'linear-gradient(135deg,#00695C,#4DB6AC)',
+  'linear-gradient(135deg,#B71C1C,#EF5350)',
+  'linear-gradient(135deg,#1565C0,#00897B)',
+  'linear-gradient(135deg,#F57F17,#FBC02D)'
+];
+const AVATAR_SWATCHES = ['#1565C0','#2E7D32','#E65100','#6A1B9A','#00695C','#B71C1C','#0277BD','#F57F17'];
+
+function getAboutData() {
+  try { return JSON.parse(localStorage.getItem('gli_about') || 'null'); } catch(e) { return null; }
+}
+function saveAboutData(data) {
+  localStorage.setItem('gli_about', JSON.stringify(data));
+}
+function getAboutMembers() {
+  const d = getAboutData();
+  return (d && d.members) ? d.members : ABOUT_DEFAULT_MEMBERS;
+}
+function getWhoWeAre() {
+  const d = getAboutData();
+  return (d && d.whoWeAre) ? d.whoWeAre : ABOUT_DEFAULT_WHO;
+}
+
+function renderAboutPage() {
+  const whoEl = document.getElementById('whoWeAreText');
+  if(whoEl) whoEl.textContent = getWhoWeAre();
+  const grid = document.getElementById('teamGrid');
+  if(!grid) return;
+  const members = getAboutMembers();
+  grid.innerHTML = members.map(m => `
+    <div class="team-card">
+      <div class="team-avatar" style="background:${escHtml(m.color)};">${escHtml(m.initials)}</div>
+      <div class="team-name">${escHtml(m.name)}</div>
+      <div class="team-role">${escHtml(m.role)}</div>
+      <div class="team-bio">${escHtml(m.bio)}</div>
+    </div>`).join('');
+}
+
+function openAboutAdmin() {
+  document.getElementById('aboutWhoWeAre').value = getWhoWeAre();
+  renderTeamAdminList();
+  cancelMemberForm();
+  buildColorPicker();
+}
+
+function buildColorPicker() {
+  const row = document.getElementById('colorPickerRow');
+  if(!row) return;
+  row.innerHTML = AVATAR_SWATCHES.map((c, i) =>
+    `<div class="color-swatch" style="background:${AVATAR_COLORS[i]};" title="${c}" onclick="selectColor(${i})"></div>`
+  ).join('');
+  // highlight first by default
+  row.children[0] && row.children[0].classList.add('selected');
+}
+
+function selectColor(i) {
+  document.getElementById('memberColor').value = AVATAR_COLORS[i];
+  document.querySelectorAll('.color-swatch').forEach((s,idx) => s.classList.toggle('selected', idx === i));
+}
+
+function renderTeamAdminList() {
+  const members = getAboutMembers();
+  const wrap = document.getElementById('teamAdminList');
+  if(!wrap) return;
+  if(members.length === 0) {
+    wrap.innerHTML = '<div style="text-align:center;padding:20px;color:#aaa;font-size:.85rem;">No team members yet.</div>';
+    return;
+  }
+  wrap.innerHTML = members.map((m, i) => `
+    <div class="team-admin-row">
+      <div class="team-admin-avatar" style="background:${escHtml(m.color)};">${escHtml(m.initials)}</div>
+      <div class="team-admin-info">
+        <div class="team-admin-name">${escHtml(m.name)}</div>
+        <div class="team-admin-role">${escHtml(m.role)}</div>
+      </div>
+      <div class="team-admin-actions">
+        <button class="btn-edit-member" onclick="openEditMember(${i})">Edit</button>
+        <button class="btn-del-member" onclick="deleteMember(${i})">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function saveWhoWeAre() {
+  const text = document.getElementById('aboutWhoWeAre').value.trim();
+  if(!text) { showAboutAlert('Text cannot be empty.', false); return; }
+  const d = getAboutData() || {};
+  d.whoWeAre = text;
+  saveAboutData(d);
+  renderAboutPage();
+  showAboutAlert('Who We Are section saved!', true);
+}
+
+function showAboutAlert(msg, ok) {
+  const el = document.getElementById('aboutAlert');
+  el.textContent = msg;
+  el.className = 'about-av-alert show ' + (ok ? 'ok' : 'err');
+  setTimeout(() => { el.className = 'about-av-alert'; }, 3500);
+}
+
+function openAddMember() {
+  document.getElementById('editMemberIndex').value = '-1';
+  document.getElementById('memberName').value = '';
+  document.getElementById('memberInitials').value = '';
+  document.getElementById('memberRole').value = '';
+  document.getElementById('memberBio').value = '';
+  document.getElementById('memberColor').value = AVATAR_COLORS[0];
+  buildColorPicker();
+  document.getElementById('teamMemberForm').style.display = 'block';
+}
+
+function openEditMember(i) {
+  const members = getAboutMembers();
+  const m = members[i];
+  document.getElementById('editMemberIndex').value = i;
+  document.getElementById('memberName').value = m.name;
+  document.getElementById('memberInitials').value = m.initials;
+  document.getElementById('memberRole').value = m.role;
+  document.getElementById('memberBio').value = m.bio;
+  document.getElementById('memberColor').value = m.color;
+  buildColorPicker();
+  // highlight matching swatch
+  const idx = AVATAR_COLORS.indexOf(m.color);
+  if(idx >= 0) {
+    document.querySelectorAll('.color-swatch').forEach((s,j) => s.classList.toggle('selected', j === idx));
+  }
+  document.getElementById('teamMemberForm').style.display = 'block';
+}
+
+function cancelMemberForm() {
+  document.getElementById('teamMemberForm').style.display = 'none';
+}
+
+function saveMember() {
+  const name = document.getElementById('memberName').value.trim();
+  const initials = document.getElementById('memberInitials').value.trim();
+  const role = document.getElementById('memberRole').value.trim();
+  const bio = document.getElementById('memberBio').value.trim();
+  const color = document.getElementById('memberColor').value;
+  if(!name || !initials || !role || !bio) { showAboutAlert('Please fill in all fields.', false); return; }
+  const members = getAboutMembers();
+  const idx = parseInt(document.getElementById('editMemberIndex').value, 10);
+  const member = { name, initials, role, bio, color };
+  if(idx >= 0) { members[idx] = member; } else { members.push(member); }
+  const d = getAboutData() || {};
+  d.members = members;
+  saveAboutData(d);
+  cancelMemberForm();
+  renderTeamAdminList();
+  renderAboutPage();
+  showAboutAlert(idx >= 0 ? 'Member updated!' : 'Member added!', true);
+}
+
+function deleteMember(i) {
+  if(!confirm('Delete this team member?')) return;
+  const members = getAboutMembers();
+  members.splice(i, 1);
+  const d = getAboutData() || {};
+  d.members = members;
+  saveAboutData(d);
+  renderTeamAdminList();
+  renderAboutPage();
+  showAboutAlert('Member deleted.', true);
+}
+
+// Render About page on load
+renderAboutPage();
 </script>
 </body>
 </html>
