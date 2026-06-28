@@ -553,39 +553,13 @@
   </div>
   <button class="mobile-nav-item m-active" id="mob-tab-home" onclick="mobileSwitchSection('home')"><span class="m-icon">🏠</span> Home</button>
   <button class="mobile-nav-item" id="mob-tab-about" onclick="mobileSwitchSection('about')"><span class="m-icon">👥</span> About Us</button>
+  <button class="mobile-nav-item" id="mob-tab-story" onclick="mobileSwitchSection('story')"><span class="m-icon">✨</span> Share Your Story</button>
   <button class="mobile-nav-item" id="mob-tab-pathways" onclick="mobileSwitchSection('pathways')"><span class="m-icon">📚</span> Knowledge Portals</button>
   <button class="mobile-nav-item" id="mob-tab-contact" onclick="mobileSwitchSection('contact')"><span class="m-icon">📞</span> Contact Us</button>
-  <button class="mobile-nav-item" id="mob-tab-submit" onclick="mobileSwitchSection('submit')"><span class="m-icon">✏️</span> Submit Work</button>
-  <button class="mobile-nav-item" id="mob-tab-success" onclick="mobileSwitchSection('success')"><span class="m-icon">🌟</span> Success Stories</button>
 </div>
 
 <!-- QUICK-ACCESS PANEL -->
-<div class="quick-overlay" id="quickOverlay" onclick="closeWaffle()"></div>
-<div class="quick-panel" id="quickPanel">
-  <div class="quick-panel-head">
-    <h3>⚡ Quick Access</h3>
-    <p>Jump directly to any section</p>
-    <button class="quick-panel-x" onclick="closeWaffle()">✕</button>
-  </div>
-  <div class="quick-cards">
-    <button class="quick-card" onclick="openQuickSection('pathways')">
-      <div class="quick-card-icon" style="background:#e3f2fd;">📚</div>
-      <div class="quick-card-text"><h4>Knowledge Portals</h4><p>Curated learning journeys</p></div>
-      <span class="quick-card-arrow">›</span>
-    </button>
-    <div class="quick-sep"></div>
-    <button class="quick-card" onclick="openQuickSection('submit')">
-      <div class="quick-card-icon" style="background:#fff8e1;">✏️</div>
-      <div class="quick-card-text"><h4>Submit Your Work</h4><p>Share your projects &amp; reports</p></div>
-      <span class="quick-card-arrow">›</span>
-    </button>
-    <button class="quick-card" onclick="openQuickSection('success')">
-      <div class="quick-card-icon" style="background:#fff3e0;">🌟</div>
-      <div class="quick-card-text"><h4>Success Stories</h4><p>Celebrate achievements</p></div>
-      <span class="quick-card-arrow">›</span>
-    </button>
-  </div>
-</div>
+
 
 <section class="hero">
 <h2>Build <span>Skills</span> That Matter</h2>
@@ -597,18 +571,8 @@
     <div class="nav-tabs-center">
       <button class="nav-tab active" onclick="showSection('home')" id="tab-home"><span>🏠</span> Home</button>
       <button class="nav-tab" onclick="showSection('about')" id="tab-about"><span>👥</span> About Us</button>
+      <button class="nav-tab" onclick="showSection('story')" id="tab-story"><span>✨</span> Share Your Story</button>
       <button class="nav-tab" onclick="showSection('contact')" id="tab-contact"><span>📞</span> Contact Us</button>
-    </div>
-    <div class="nav-right">
-      <div class="nav-divider" style="height:36px;"></div>
-      <button class="explore-btn" onclick="toggleWaffle()" aria-label="Explore Us">
-        <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="4" cy="4" r="1.8"/><circle cx="10" cy="4" r="1.8"/><circle cx="16" cy="4" r="1.8"/>
-          <circle cx="4" cy="10" r="1.8"/><circle cx="10" cy="10" r="1.8"/><circle cx="16" cy="10" r="1.8"/>
-          <circle cx="4" cy="16" r="1.8"/><circle cx="10" cy="16" r="1.8"/><circle cx="16" cy="16" r="1.8"/>
-        </svg>
-        Explore Us
-      </button>
     </div>
   </div>
 </nav>
@@ -1025,6 +989,29 @@
   </div>
 </div>
 
+<!-- VIEW: SHARE YOUR STORY -->
+<div class="view" id="view-story">
+  <div class="section-header">
+    <h3>Share Your Story</h3>
+    <p>Submit your work or inspire others with your success journey.</p>
+    <div class="divider"></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;padding:0 32px 56px;">
+    <div class="placeholder-view" style="flex:1;min-width:260px;max-width:480px;">
+      <div class="placeholder-icon">✏️</div>
+      <h3>Submit Your Work</h3>
+      <p>Completed an assignment or project? The submission portal will allow you to share your work with mentors and peers for feedback and recognition.</p>
+      <span class="coming-tag">Coming Soon</span>
+    </div>
+    <div class="placeholder-view" style="flex:1;min-width:260px;max-width:480px;">
+      <div class="placeholder-icon">🌟</div>
+      <h3>Success Stories</h3>
+      <p>Inspire others by sharing your transformation journey. Real stories of impact ignite hope and drive collective progress.</p>
+      <span class="coming-tag">Coming Soon</span>
+    </div>
+  </div>
+</div>
+
 <!-- VIEW: SUBMIT YOUR WORK -->
 <div class="view" id="view-submit">
   <div class="placeholder-view">
@@ -1373,7 +1360,7 @@ function showSection(name) {
   const map={
     home:'view-home', about:'view-about', services:'view-services',
     pathways:'view-pathways', blog:'view-blog', contact:'view-contact',
-    portal:'view-portal', submit:'view-submit', success:'view-success'
+    portal:'view-portal', submit:'view-submit', success:'view-success', story:'view-story'
   };
   const v=document.getElementById(map[name]);
   if(v) v.classList.add('active');
